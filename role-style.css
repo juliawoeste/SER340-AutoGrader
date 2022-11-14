@@ -1,11 +1,8 @@
 body{
     background: url(images/laptopcoffee.jpeg);
-  
+    background-size: 105%;
 }
 
-.q-logo{
-    background-image: url(images/q_logo.png)
-}
 
 .components{
     background-color: white;
