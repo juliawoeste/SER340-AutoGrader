@@ -4,9 +4,39 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+    crossorigin="anonymous">
+    <link rel="stylesheet" href="option-page-style.css">
+    <title>Professor Options</title>
 </head>
 <body>
-    
+    <div class = "components">
+        <div class="title">
+            <h4>What would you like to do?</h4>
+        <h6>Select one option to continue.</h6>
+        <div class="row">
+            <div id="option" class="col-5">
+                <h5>View Student Account</h5>
+                <select name="students" id="dropDown">
+                    <option value="humna">Humna Hanif</option>
+                    <option value="julia">Julia Woeste</option>
+                    <option value="david">David Nguyen</option>
+                    <option value="elon">Elon Musk</option>
+                </select>
+            </div>
+            <div id="option2" class="col-5">
+                <h5>View Classroom</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div id="confirm1" class="col-4">
+                <a href= "view-student-account.html"><button style="font-weight: bold;">CONFIRM</button></a>
+            </div>
+            <div id="confirm2" class="col-4">
+                <a href= "professor-dashboard.html"><button style="font-weight: bold;">CONFIRM</button></a>
+            </div>
+        </div>
+
+    </div>
 </body>
 </html>
