@@ -1,0 +1,41 @@
+body{
+    background: url(images/laptopcoffee.jpeg);
+    background-size: 105%;
+}
+
+
+.components{
+    background-color: white;
+    width: 35%;
+    height: 450px;
+    color: black;
+    margin-left: 145px;
+    margin-top: 200px;
+    border-radius: 5px;
+}
+
+.components h6{
+    font-weight: lighter;
+    padding-top: 20px;
+}
+
+.title{
+    margin-left: 40px;
+    padding-top: 50px;
+}
+
+.row button {
+    width: 200px;
+    height: 45px;
+    background-color: #487CEC;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    margin-left: 160px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.form-control {
+    width: 75%;
+}
