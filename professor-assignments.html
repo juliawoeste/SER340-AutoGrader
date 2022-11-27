@@ -1,12 +1,110 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professor Assignments</title>
-</head>
-<body>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
+        <link rel="stylesheet" href="option-page-style.css">
+        <title>Professor Assignments</title>
+    </head>
+    <body>
+        <div class = "components">
+            <div class="title">
+                <h4>Course Dashboard</h4>
+            <h6>View assignments and enrolled students.</h6>
+            <div class="row">
+                <div id="option" class="col-5" style="padding-top:35px;">
+                    <table>
+                        <tr>
+                            <th>Assignments</th>
+                        </tr>
+                        <tr>
+                            <td><a href = "???" >Milestone 1</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href = "???" >Milestone 2</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href = "???" >Milestone 3</a></td>
+                        </tr>
+                        
+                    </table>
+                
+                </div>
+                <div id="option2" class="col-5" style="padding-top:35px; padding-left: 20px;">
+                    <table>
+                        <tr>
+                            <th>Students</th>
+                        </tr>
+                        <tr>
+                            <td><a href = "???" >Humna Hanif</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href = "???" >David Nguyen</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href = "???" >Julia Woeste</a></td>
+                        </tr>
+                        
+                    </table>
+                </div>
+                </div>
+                <div class="row" style="padding-left: 85px;">
+                <div class="col-5">
+                    <button id="myBtn">Add Assignment</button>
+
+                    <!-- The Modal -->
+                    <div id="myModal" class="modal">
+                    
+                      <!-- Modal content -->
+                      <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <p>Some text in the Modal..</p>
+                      </div>
+                     
+
+
+</div>
+                        
+                    </div>
+                    <div class="col-5" style="padding-left: 85px;">
+                            <a href="add-student.html"><button>Add Student</button></a>
+                    </div>
+            </div>
+        </div>
+        </div>
+
+            
     
-</body>
-</html>
+    </body>
+
+    <script>
+        // Get the modal
+        var modal = document.getElementById("myModal");
+        
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+        
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+        
+        // When the user clicks on the button, open the modal
+        btn.onclick = function() {
+          modal.style.display = "block";
+        }
+        
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+          modal.style.display = "none";
+        }
+        
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        }
+        </script>
+    </html>
