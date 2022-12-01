@@ -15,96 +15,37 @@
                 <h4>Course Dashboard</h4>
             <h6>View assignments and enrolled students.</h6>
             <div class="row">
-                <div id="option" class="col-5" style="padding-top:35px;">
-                    <table>
+                <div id="option" class="col-5" style="padding-top:35px; margin-left: auto; margin-right: auto; height: 550px;">
+                    <table style="margin-left: auto; margin-right: auto;">
                         <tr>
-                            <th>Assignments</th>
+                            <th style="text-align: center;">Assignments</th>
                         </tr>
                         <tr>
-                            <td><a href = "???" >Milestone 1</a></td>
+                            <td style="text-align: center;" id="link"><a id="link" href = "???" >Milestone 1</a></td>
                         </tr>
                         <tr>
-                            <td><a href = "???" >Milestone 2</a></td>
+                            <td style="text-align: center;" id="link"><a id="link" href = "???" >Milestone 2</a></td>
                         </tr>
                         <tr>
-                            <td><a href = "???" >Milestone 3</a></td>
+                            <td style="text-align: center;" id="link"><a id="link" href = "???" >Milestone 3</a></td>
                         </tr>
                         
                     </table>
                 
                 </div>
-                <div id="option2" class="col-5" style="padding-top:35px; padding-left: 20px;">
-                    <table>
-                        <tr>
-                            <th>Students</th>
-                        </tr>
-                        <tr>
-                            <td><a href = "???" >Humna Hanif</a></td>
-                        </tr>
-                        <tr>
-                            <td><a href = "???" >David Nguyen</a></td>
-                        </tr>
-                        <tr>
-                            <td><a href = "???" >Julia Woeste</a></td>
-                        </tr>
-                        
-                    </table>
-                </div>
+                
                 </div>
                 <div class="row" style="padding-left: 85px;">
-                <div class="col-5">
+                <div class="col-5" style="margin-right: auto; margin-left: auto;">
                     <button id="myBtn">Add Assignment</button>
-
-                    <!-- The Modal -->
-                    <div id="myModal" class="modal">
-                    
-                      <!-- Modal content -->
-                      <div class="modal-content">
-                        <span class="close">&times;</span>
-                        <p>Some text in the Modal..</p>
                       </div>
                      
 
 
 </div>
                         
-                    </div>
-                    <div class="col-5" style="padding-left: 85px;">
-                            <a href="add-student.html"><button>Add Student</button></a>
-                    </div>
-            </div>
-        </div>
-        </div>
-
             
     
     </body>
 
-    <script>
-        // Get the modal
-        var modal = document.getElementById("myModal");
-        
-        // Get the button that opens the modal
-        var btn = document.getElementById("myBtn");
-        
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
-        
-        // When the user clicks on the button, open the modal
-        btn.onclick = function() {
-          modal.style.display = "block";
-        }
-        
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function() {
-          modal.style.display = "none";
-        }
-        
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
-          if (event.target == modal) {
-            modal.style.display = "none";
-          }
-        }
-        </script>
     </html>
