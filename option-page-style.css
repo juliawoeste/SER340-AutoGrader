@@ -36,6 +36,12 @@ font-weight: bold;
 
 }
 
+.row2 {
+    width: 100%;
+    display: flex;
+
+}
+
 #option {
     background-color: #8899afec;
     height: 260px;

@@ -14,20 +14,52 @@
         <div class="title">
             <h4>Login</h4>
         <h6>Sign in to your account to continue.</h6>
-
+        <form name="myForm">
         <h6 style="font-weight: bold;">Professor Email</h6>
-        <input type="email" class="form-control form-control-lg" placeholder="QU Email">
+        <input type="email" class="form-control form-control-lg" placeholder="QU Email" name="field1">
         <h6 style="font-weight: bold;">Professor Password <a href="forgot-password.html" style="font-weight: lighter; font-size: 13px; padding-left: 25px;">Forgot Password?</a></h6>
-        <input type="password" class="form-control form-control-lg" placeholder="Password">
-        </div>
+        <input type="password" class="form-control form-control-lg" placeholder="Password" name="field3">
+    </form>    
+    </div>
     
 
         <div class = "row">
-            <a href= "professor-view-courses.html"><button>Login -></button></a>
+            <button onclick="usernameRequired(); passwordValid(); fieldFilled()">Login -></button></a>
         </div>
 
 
     </div>
+    <script>
+        function usernameRequired() {
+        var field1 = document.forms["myForm"]["field1"].value;
+    
+        if (field1 == "") {
+            alert("Please enter a username.");
+            return false;
+        } else {
+            return true;
+        }
+    }
+    
+    // checks password field and ensures it is completed, references field with id 
+    function passwordValid() {
+        var charsNotAllowed = /\W/;
+        var field3 = document.forms["myForm"]["field3"].value;
+    
+    
+        if (field3 == "") {
+            alert("Please enter a password.");
+            return false;
+        } else {
+            return true;
+        }
+    }
 
+    function fieldFilled() {
+        if (passwordValid() == true && usernameRequired() == true) {
+            window.location.href = "professor-view-courses.html";
+        } 
+    }
+    </script>
 </body>
 </html>
