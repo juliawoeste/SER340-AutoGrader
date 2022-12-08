@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -11,30 +11,31 @@
         <link rel="stylesheet" href="option-page-style.css">
         <title>Professor Assignments</title>
     </head>
-    <header style="background-color: #E8E4E4; height: 50px; text-align: left;">
+    <header>
     
         <nav>
             <div class="row2">
-                <h6 style="margin-right: 10px; padding-top: 20px; font-size: larger;"><i class="bi bi-person-circle"></i>Professor Blake</i></h6>
-                <a href="student-course-requests.html" style="padding-top: 20px;">Student Course Requests</a>   
+                <h6 style="margin-left: 2rem; font-size: larger;"><img class="professorpfp" src="images/professor.png" alt="">Professor Blake</h6>
+                <a href="student-course-requests.html" style="padding-left: 2rem; padding-top: 1rem;">Student Course Requests</a>   
+                <a href="userRoles.html" style="padding-top: 20px; text-align: left; align-items: left; padding-left: 900px;">Log Out</a>
             </div>
         </nav>
     
     </header>
     <body>
-        <div class = "components">
+        <section class="glasscard" style="width: 50rem; height: 40rem; margin-top: 4rem;">
             <div class="title">
                 <h4>Course Dashboard</h4>
-            <h6 style="padding-top: 15px;">View assignments and enrolled students.</h6>
+            <h6 style="margin-top: 1rem;">View assignments and enrolled students.</h6>
             </div>
-            <div class="row">
-                <div id="option" class="col-5" style="padding-top:35px; margin-left: auto; margin-right: auto; height: 520px;">
+            <div class="row" style="margin-top: 2rem;">
+                <div id="secondCard" class="col-5" style="padding-top:35px; margin-left: auto; margin-right: auto; height: 25rem;">
                     <table style="margin-left: auto; margin-right: auto;">
                         <tr>
-                            <th style="text-align: center;">Assignments</th>
+                            <th style="text-align: center; padding-bottom: 1rem;">Assignments</th>
                         </tr>
                         <tr>
-                            <td style="text-align: center;" id="link"><a id="link" href = "professor-assignment-view.html" >Milestone 1</a></td>
+                            <td style="text-align: center;" id="link"><a id="link" href = "professor-assignment-view.html">Milestone 1</a></td>
                         </tr>
                         <tr>
                             <td style="text-align: center;" id="link"><a id="link" href = "professor-assignment-view.html" >Milestone 2</a></td>
@@ -48,17 +49,12 @@
                 </div>
                 
                 </div>
-                <div class="row" style="padding-left: 85px;">
-                <div class="col-5" style="margin-right: auto; margin-left: 280px; ">
-                    <a href="add-assignment.html"><button id="myBtn">Add Assignment</button></a>
-                      </div>
-                     
-
-
-</div>
-                        
-            
-    
+                <div class="row" style="margin-left: 17rem; margin-top: 0.5rem;">
+                    <div class="col-5">
+                        <a href="add-assignment.html"><button id="myBtn">Add Assignment</button></a>
+                    </div>
+                </div>
+            </div>
+        </section>
     </body>
-
-    </html>
+</html>

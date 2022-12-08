@@ -1,95 +1,91 @@
-body{
-    background: url(images/laptopcoffee.jpeg);
-    background-size: 105%;
+body {
+  background: url(images/laptopcoffee.jpeg);
+  background-size: 105%;
 }
 
-
-.components{
-    background-color: white;
-    width: 35%;
-    height: 450px;
-    color: black;
-    margin-left: 145px;
-    margin-top: 200px;
-    border-radius: 5px;
+.components {
+  background-color: white;
+  width: 35%;
+  height: 450px;
+  color: black;
+  margin-left: 145px;
+  margin-top: 200px;
+  border-radius: 5px;
 }
 
-.components h6{
-    font-weight: lighter;
+.components h6 {
+  font-weight: lighter;
 }
 
-.title{
-    margin-left: 40px;
-    padding-top: 50px;
+.title {
+  margin-left: 40px;
+  padding-top: 50px;
 }
 
 .row {
-    width: 100%;
-    margin-top: 20px;
-    display: flex;
-
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
 }
 
-.row button{
-    width: 200px;
-    height: 45px;
-    background-color: #487CEC;
-    border-radius: 5px;
-    color: white;
-    font-weight: bold;
-    margin-left: 160px;
-    margin-top: 20px;
-    cursor: pointer;
+.row button {
+  width: 200px;
+  height: 45px;
+  background-color: #487cec;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  margin-left: 160px;
+  margin-top: 20px;
+  cursor: pointer;
 }
 
 .col-1 {
-    width: 8.33%;
+  width: 8.33%;
 }
 
 .col-2 {
-    width: 16.66%;
+  width: 16.66%;
 }
 
 /*Customizes column*/
 .col-3 {
-    width: 25%;
-   
+  width: 25%;
 }
 
 /*Customizes column*/
 .col-4 {
-    width: 33.33%;
-
+  width: 33.33%;
 }
 
 .col-5 {
-    width: 41.66%;
+  width: 41.66%;
 }
 
 .col-6 {
-    width: 50%;
+  width: 50%;
 }
 
 .col-7 {
-    width: 58.33%;
+  width: 58.33%;
 }
 
 .col-8 {
-    width: 66.66%;
+  width: 66.66%;
 }
 
-.col-9 {    
-    width: 75%;
+.col-9 {
+  width: 75%;
 }
 
 .col-10 {
-    width: 83.33%;
+  width: 83.33%;
 }
 
 .col-11 {
-    width: 91.66%;
+  width: 91.66%;
 }
 
 .col-12 {
-    width: 100%;
+  width: 100%;
 }

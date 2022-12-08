@@ -12,35 +12,36 @@
     <title>Assignment</title>
 </head>
 
-<header style="background-color: #E8E4E4; height: 50px; text-align: left;">
-    
+<header>
     <nav>
-        <h6 style="margin-right: 10px; padding-top: 20px; font-size: larger;"><i class="bi bi-person-circle"></i>Professor Blake</i></h6>
-       
+        <div class="row2">
+            <h6 style="margin-left: 2rem; font-size: larger;"><img class="professorpfp" src="images/professor.png" alt="">Professor Blake</h6>
+            <a href="student-course-requests.html" style="padding-left: 2rem; padding-top: 1rem;">Student Course Requests</a>   
+            <a href="userRoles.html" style="padding-top: 20px; text-align: left; align-items: left; padding-left: 900px;">Log Out</a>
+        </div>
     </nav>
-
 </header>
 <body>
-    <div class = "components" style="height: 1000px;">
+    <section class="glasscard" style="width: 60rem; height: 55rem; margin-top: 3rem;">
         <div class="title">
             <h4>Assignment</h4>
         
 
-        <div class = "row" style="padding-left: 55px; padding-top: 15px;">
-           <div class = "row"> <h5>Assignment Title</h5></div>
-           <div class = "row"><h6>Lorem ipsum</h6></div>
-           <div class = "row"> <h5>Assignment Due Date</h5></div>
-           <div class = "row"><h6>12/17/2022</h6></div>
-           <div class = "row"> <h5>Assignment Description</h5></div>
-           <div class = "row"><h6>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis voluptate temporibus in, quam repellat optio nihil voluptatibus eligendi provident reprehenderit iusto tempora, aut, assumenda voluptatum ipsam ex esse sint quasi. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia temporibus dolor quos incidunt magnam et fugit consequatur voluptas, dignissimos sunt minima eligendi natus atque similique harum suscipit accusamus dolorem eveniet. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis voluptate maxime at quibusdam, ex tempore pariatur corporis reprehenderit iste impedit quae itaque sequi error assumenda perspiciatis hic ab sapiente dignissimos?</h6></div>
-           <div class = "row"> <h5>Assignment File(s)</h5></div>
-           <div class = "row"><a href="Milestone 3.pdf">Lorem ipsum assignment</a></div>
+        <div class = "row" style="padding-left: 55px;">
+           <div class = "row" style="margin-top: 2rem;"><h5>Assignment Title</h5></div>
+           <div class = "row" style="margin-top: 0rem;"><h6>Lorem ipsum</h6></div>
+           <div class = "row" style="margin-top: 2rem;"> <h5>Assignment Due Date</h5></div>
+           <div class = "row" style="margin-top: 0rem;"><h6>12/17/2022</h6></div>
+           <div class = "row" style="margin-top: 2rem;"> <h5>Assignment Description</h5></div>
+           <div class = "row" style="margin-top: 0rem;"> <h6>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis voluptate temporibus in, quam repellat optio nihil voluptatibus eligendi provident reprehenderit iusto tempora, aut, assumenda voluptatum ipsam ex esse sint quasi. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia temporibus dolor quos incidunt magnam et fugit consequatur voluptas, dignissimos sunt minima eligendi natus atque similique harum suscipit accusamus dolorem eveniet. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis voluptate maxime at quibusdam, ex tempore pariatur corporis reprehenderit iste impedit quae itaque sequi error assumenda perspiciatis hic ab sapiente dignissimos?</h6></div>
+           <div class = "row" style="margin-top: 2rem;"> <h5>Assignment File(s)</h5></div>
+           <div class = "row" style="margin-top: 0rem;"><a href="Milestone 3.pdf">Lorem ipsum assignment</a></div>
 
         </div>
 
-        <table style="margin-top: 50px; margin-left: auto; margin-right: auto; padding-bottom: 150px;">
+        <table style="margin-left: auto; margin-right: auto;">
             <tr>
-                <th style=" border: 1px solid black; padding: 20px; text-align: center;">Student</th>
+                <th style=" border: 1px solid black;  text-align: center;">Student</th>
                 <th style=" border: 1px solid black; padding: 20px; text-align: center;">Status</th>
                 <th style=" border: 1px solid black; padding: 20px; text-align: center;">Grade</th>
             </tr>
@@ -50,9 +51,9 @@
                 <td style=" border: 1px solid black; padding: 10px; text-align: center;">A</td>
             </tr>
             <tr>
-                <td style=" border: 1px solid black; padding: 10px; text-align: center;">David Ngyuen</td>
-                <td style=" border: 1px solid black; padding: 10px; text-align: center;">Not Submitted</td>
-                <td style=" border: 1px solid black; padding: 10px; text-align: center;">N/A</td>
+                <td style=" border: 1px solid black; padding: 10px; text-align: center;">David Nguyen</td>
+                <td style=" border: 1px solid black; padding: 10px; text-align: center;">Submitted</td>
+                <td style=" border: 1px solid black; padding: 10px; text-align: center;">B</td>
             </tr>
             <tr>
                 <td style=" border: 1px solid black; padding: 10px; text-align: center;">Julia Woeste</td>
@@ -60,16 +61,11 @@
                 <td style=" border: 1px solid black; padding: 10px; text-align: center;">A</td>
             </tr>
         </table>
-    </div>
-
-    <div class="row" style="padding-left: 85px; ">
-        <div class="col-5" style="margin-right: auto; margin-left: 310px; ">
-            <a><button id="myBtn">Export Grades</button></a>
-              </div>
-</div>
-
-    
+        <div class="row" style="padding-left: 3rem;">
+            <div class="col-5" style="margin-right: auto; margin-left: 310px; ">
+                <a><button id="myBtn">Export Grades</button></a>
+                  </div>
+        </div>
+    </section>
 </body>
-
-
 </html>

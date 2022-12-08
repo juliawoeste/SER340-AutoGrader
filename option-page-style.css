@@ -1,179 +1,257 @@
-body{
-    background: url(images/laptopcoffee.jpeg);
-    background-size: 105%;
+body {
+  background: url(images/laptopcoffee.jpeg);
+  background-size: 105%;
 }
 
-.components{
-    background-color: white;
-    width: 67%;
-    height: 800px;
-    color: black;
-    border-radius: 5px;
-    margin-top: 25px;
-    margin-left: 25px;
-    margin-bottom: 25px;
+.components {
+  background-color: white;
+  width: 67%;
+  height: 800px;
+  color: black;
+  border-radius: 5px;
+  margin-top: 25px;
+  margin-left: 25px;
+  margin-bottom: 25px;
 }
 
 #link {
-color: black;
-text-decoration: underline;
-font-weight: bold;
+  color: black;
+  text-decoration: underline;
+  font-weight: bold;
 }
 
-.components h6{
-    font-weight: lighter;
+.components h6 {
+  font-weight: lighter;
 }
 
-.title{
-    margin-left: 40px;
-    padding-top: 50px;
+.title {
+  margin-left: 40px;
+  padding-top: 50px;
 }
 
 .row {
-    width: 100%;
-    margin-top: 20px;
-    display: flex;
-
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
 }
 
 .row2 {
-    width: 100%;
-    display: flex;
-
+  width: 100%;
+  display: flex;
 }
 
 #option {
-    background-color: #8899afec;
-    height: 260px;
-    margin-left: 40px;
-    border-radius: 5px;
+  background-color: #8899afec;
+  height: 260px;
+  margin-left: 40px;
+  border-radius: 5px;
 }
 
 #dropDown {
-    margin-left: 60px;
-    margin-top: 25px;
-    height: 30px;
+  margin-left: 60px;
+  margin-top: 25px;
+  height: 30px;
 }
 
 #option2 {
-    background-color: #8899afec;
-    height: 260px;
-    margin-left: 40px;
-    padding-left: 85px;
-    border-radius: 5px;
-    padding-top: 115px;
+  background-color: #8899afec;
+  height: 260px;
+  margin-left: 40px;
+  padding-left: 85px;
+  border-radius: 5px;
+  padding-top: 115px;
 }
 
-#option h5{
-    text-align: center;
-    padding-top: 60px;
+#option h5 {
+  text-align: center;
+  padding-top: 60px;
 }
 
 #confirm1 {
-    margin-left: 85px;
+  margin-left: 85px;
 }
 
 #confirm2 {
-    margin-left: 100px;
+  margin-left: 100px;
 }
 
+.cards {
+  margin: 5rem;
+  flex-direction: colum;
+  justify-content: space-evenly;
+}
 
-.row button{
-    width: 200px;
-    height: 45px;
-    background-color: #487CEC;
-    border-radius: 5px;
-    color: white;
-    font-weight: bold;
-    margin-top: 20px;
-    cursor: pointer;
+#secondCard {
+  background: linear-gradient(
+    to left top,
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.9)
+  );
+  border-radius: 1rem;
+  width: 25rem;
+  box-shadow: 6px 6px 20px rgba(122, 122, 122, 0.9);
+}
+
+.card {
+  display: flex;
+  background: linear-gradient(
+    to left top,
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.9)
+  );
+  border-radius: 1rem;
+  width: 22rem;
+  height: 6rem;
+  box-shadow: 6px 6px 20px rgba(122, 122, 122, 0.9);
+}
+
+.card-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.adminpfp {
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-right: 1rem;
+  margin-top: 0.5rem;
+}
+
+.studentpfp {
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-right: 1rem;
+  margin-top: 0.5rem;
+}
+
+.professorpfp {
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-right: 1rem;
+  margin-top: 0.5rem;
+}
+
+header {
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.35)
+  );
+  height: 3.5rem;
+  text-align: left;
+}
+
+.glasscard {
+  margin-top: 8%;
+  margin-right: 0%;
+  margin-left: 15%;
+  background: white;
+  min-height: 35rem;
+  width: 45%;
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.35)
+  );
+  border-radius: 1rem;
+}
+
+.row button {
+  width: 200px;
+  height: 45px;
+  background-color: #487cec;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  margin-top: 20px;
+  cursor: pointer;
 }
 
 .col-1 {
-    width: 8.33%;
+  width: 8.33%;
 }
 
 .col-2 {
-    width: 16.66%;
+  width: 16.66%;
 }
 
 /*Customizes column*/
 .col-3 {
-    width: 25%;
-   
+  width: 25%;
 }
 
 /*Customizes column*/
 .col-4 {
-    width: 33.33%;
+  width: 33.33%;
 }
 
 .col-5 {
-    width: 41.66%;
-    border-color: black;
+  width: 41.66%;
+  border-color: black;
 }
 
 .col-6 {
-    width: 50%;
+  width: 50%;
 }
 
 .col-7 {
-    width: 58.33%;
+  width: 58.33%;
 }
 
 .col-8 {
-    width: 66.66%;
+  width: 66.66%;
 }
 
-.col-9 {    
-    width: 75%;
+.col-9 {
+  width: 75%;
 }
 
 .col-10 {
-    width: 83.33%;
+  width: 83.33%;
 }
 
 .col-11 {
-    width: 91.66%;
+  width: 91.66%;
 }
 
 .col-12 {
-    width: 100%;
+  width: 100%;
 }
 /* The Modal (background) */
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  }
-  
-  /* Modal Content/Box */
-  .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
-  }
-  
-  /* The Close Button */
-  .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-  }
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}

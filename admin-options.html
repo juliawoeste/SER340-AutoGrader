@@ -11,29 +11,40 @@
     <title>Admin Options</title>
 </head>
 
-<header style="background-color: #E8E4E4; height: 50px; text-align: left;">
-    
+<header>
     <nav>
-        <h6 style="margin-left: 10px; padding-top: 20px; font-size: larger;"><i class="bi bi-person-circle"></i>Taskin Kocak</i></h6>
-       
+        <div class="row2">
+        <h6 style="margin-left: 1rem; font-size: larger;"><img class="adminpfp" src="images/admin.png" alt="">Taskin Kocak</h6>
+       <a href="userRoles.html" style="padding-top: 20px; text-align: left; align-items: left; padding-left: 1200px;">Log Out</a>
+    </div>
     </nav>
+
 
 </header>
 
 <body>
-    <div class = "components">
+    <section class="glasscard" style="width: 50rem;">
         <div class="title">
             <h4>What would you like to do?</h4>
-        <h6>Select one option to continue.</h6>
-        <div class="row" style="margin-top: 160px;">
-            <div id="option" class="col-5" style="padding-top:85px;">
-                <a href= "view-professor-account.html" style="padding-left:5px"><button style="font-weight: bold; width: fit-content; height: fit-content; margin-left: 35px; margin-top: 30px;">View Active Professsor Accounts</button></a>                
+        <h6 style="margin-top: 2rem;">Select one option to continue.</h6>
+        <div class="row" style="margin-top: 5rem;">
+            <div class="col-5">
+                <div class="card">
+                    <div class="card-info">
+                        <h3 style="margin-left: 3rem; margin-top: 0rem; font-size: 2rem; margin-top: 0.5rem;">View Active Professor Account</h3>
+                    </div>
+                </div>
+                <a href= "view-professor-account.html" style="padding-left:5px"><button style="font-weight: bold; margin-top: 3rem; margin-left: 4.5rem;">Continue</button></a>                
             </div>
-            <div id="option2" class="col-5" style="padding-top:90px; padding-left: 45px;">
-                <a href= "add-professor.html"><button style="font-weight: bold; margin-left: 40px;">Add Professor</button></a>
+            <div class="col-5">
+                <div class="card" style="margin-left: 3rem;">
+                    <div class="card-info">
+                        <h3 style="margin-left: .5rem; margin-top: 1.5rem; font-size: 2rem;">Add Professor</h3>
+                    </div>
+                </div>
+                <a href= "add-professor.html"><button style="font-weight: bold; margin-top: 3rem; margin-left: 8rem;">Continue</button></a>
             </div>
         </div>
-
-    </div>
+    </section>
 </body>
 </html>

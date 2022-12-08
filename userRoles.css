@@ -1,0 +1,102 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.title {
+  margin-top: 3rem;
+  margin-left: 3rem;
+}
+
+body {
+  background: url(images/laptopcoffee.jpeg);
+  background-size: 105%;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h3 {
+  color: #426696;
+  font-weight: 600;
+  font-size: 2rem;
+  opacity: 0.8;
+}
+
+h1 {
+  color: #658ec6;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+.adminpfp {
+  width: 4rem;
+  height: 4rem;
+  margin-right: 2rem;
+}
+
+.professorpfp {
+  width: 4rem;
+  height: 4rem;
+  margin-right: 2rem;
+}
+
+.studentpfp {
+  width: 4rem;
+  height: 4rem;
+  margin-right: 2rem;
+}
+
+.glasscard {
+  margin-top: 8%;
+  margin-right: 20%;
+  background: white;
+  min-height: 25rem;
+  width: 45%;
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.35)
+  );
+  border-radius: 1rem;
+}
+
+.btn {
+  width: 8rem;
+  height: 3rem;
+  background-color: #487cec;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.cards {
+  margin: 0rem;
+  flex-direction: colum;
+  justify-content: space-evenly;
+}
+
+.card {
+  display: flex;
+  background: linear-gradient(
+    to left top,
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.9)
+  );
+  border-radius: 1rem;
+  margin: 2rem 5.5rem;
+  padding: 1rem;
+  box-shadow: 6px 6px 20px rgba(122, 122, 122, 0.9);
+}
+
+.card-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
