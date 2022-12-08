@@ -39,3 +39,8 @@ body{
 .form-control {
     width: 75%;
 }
+
+
+.row2 {
+    width: 100%;
+    display: flex;
