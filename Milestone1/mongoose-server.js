@@ -32,12 +32,28 @@ db.once("open", () => {
             dueDate: "03/28/2023",
             description: "In this milestone, you will design the database and build mongoose schemas for the database collections. You will also propose and design the endpoints. Use the requirements document form last semester and front-end implementation to identify the main collections in your database and routers needed. This milestone is 15% of the project",
             grades: [{letterGrade: "A"}]
-        }]
-        
-        
+        }]        
     });
 
-    // Save course
+    var newAdmin = Admin ({
+        name: "Administrator",
+        email: "admin@gmail.com",
+        password: "password123"
+    })
+
+    var newProfessor = Professor ({
+        name: "Ruby Elkarboutly",
+        email: "rehab.elkharboutly@quinnipiac.edu",
+        password: "ruby123"
+    })
+
+    var student = Student ({
+        name: "Rion-Mark McLaren Jr",
+        email: "ramclaren@quinnipiac.edu",
+        password: "rion123"
+    })
+
+    //Save course
     newCourse.save((err) => {
         if (err) console.error(err);
         console.log("Course created");
@@ -50,7 +66,48 @@ db.once("open", () => {
             });
         });
     });
-    
+
+    //Save Admin
+    newAdmin.save((err) => {
+        if (err) console.error(err);
+        console.log("Administrator created");
+        Admin.find({}, (err, admin) => {
+            if (err) console.error(err);
+            console.log(admin);
+
+            db.collection("Admin").drop(() => {
+                db.close();
+            });
+        });
+    });
+
+    //Save Professor
+    newProfessore.save((err) => {
+        if (err) console.error(err);
+        console.log("Professor created");
+        Professor.find({}, (err, professor) => {
+            if (err) console.error(err);
+            console.log(professor);
+
+            db.collection("Professor").drop(() => {
+                db.close();
+            });
+        });
+    });
+
+    //Save Student
+    newStudent.save((err) => {
+        if (err) console.error(err);
+        console.log("Student created");
+        Student.find({}, (err, student) => {
+            if (err) console.error(err);
+            console.log(student);
+
+            db.collection("Student").drop(() => {
+                db.close();
+            });
+        });
+    });
 });
 
 

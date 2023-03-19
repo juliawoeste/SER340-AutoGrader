@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 var gradeSchema = new Schema({
     letterGrade : {
         type : String,
-        required : true,
+        required : false,
         unique : true
     }
 },
