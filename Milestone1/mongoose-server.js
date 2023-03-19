@@ -47,7 +47,7 @@ db.once("open", () => {
         password: "ruby123"
     })
 
-    var student = Student ({
+    var newStudent = Student ({
         name: "Rion-Mark McLaren Jr",
         email: "ramclaren@quinnipiac.edu",
         password: "rion123"
@@ -82,7 +82,7 @@ db.once("open", () => {
     });
 
     //Save Professor
-    newProfessore.save((err) => {
+    newProfessor.save((err) => {
         if (err) console.error(err);
         console.log("Professor created");
         Professor.find({}, (err, professor) => {
