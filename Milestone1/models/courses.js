@@ -7,7 +7,8 @@ var gradeSchema = new Schema({
         type : String,
         required : false,
         unique : true
-    }
+    },
+    //Include Student Id
 },
     { timestamps : true 
                 
