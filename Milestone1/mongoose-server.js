@@ -6,7 +6,9 @@ var Professor = require("./models/professor");
 var Student = require("./models/student");
 var Courses = require("./models/courses");
 
-
+//Express Variables
+var express = require('express');
+var autoGraderRouter = express.Router();
 
 // Connection URL
 const uri = 
@@ -23,6 +25,9 @@ db.on("error", console.error.bind(console, "connection error:"));
 
 db.once("open", () => {
     console.log("Connected");
+
+    //Create Routes 
+
     // Insertion operation by creating a course(1)
     var newCourse1 = Courses ({
         courseName: "SER340",
@@ -90,7 +95,7 @@ db.once("open", () => {
     })
 
     // Insertion operation by creating a student(3)
-    var newStudent2 = Student ({
+    var newStudent3 = Student ({
         name: "Julia Woeste",
         email: "jwoeste@quinnipiac.edu",
         password: "julia123"
@@ -205,6 +210,26 @@ db.once("open", () => {
         });
     });
 
+    newStudent3.save((err) => {
+        if (err) console.error(err);
+        console.log("Student created");
+        Student.find({}, (err, student) => {
+            if (err) console.error(err);
+            console.log(student);
+
+            db.collection("Student").drop(() => {
+                db.close();
+            });
+        });
+    });
+
+    //Update Student 1's name
+    setTimeout(() => {Student.findOneAndUpdate(
+        {_id: newStudent1._id},
+        {$set:{name: "Updated Rion-Mark McLaren Jr"}},
+        {new: true})
+    })
+    
     //Delete course(1)
     newCourse1.remove({}, (err) => {
         if (err) console.error(err);
