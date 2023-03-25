@@ -224,11 +224,16 @@ db.once("open", () => {
     });
 
     //Update Student 1's name
-    setTimeout(() => {Student.findOneAndUpdate(
-        {_id: newStudent1._id},
-        {$set:{name: "Updated Rion-Mark McLaren Jr"}},
-        {new: true})
-    })
+    // Student.findOneAndUpdate(
+    //     {_id: newStudent1._id},
+    //     {$set:{name: "Updated Rion-Mark McLaren Jr"}},
+    //     {new: true})
+    
+    // Delete Course 1
+    // Courses.remove(
+    //     {_id:newCourse1._id},
+
+    // )
     
     //Delete course(1)
     newCourse1.remove({}, (err) => {
