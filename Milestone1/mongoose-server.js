@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 
 // Module variable
-var Admin = require("./models/admin");
+var Users = require("./models/users");
 var Professor = require("./models/professor");
 var Student = require("./models/student");
 var Courses = require("./models/courses");
@@ -51,20 +51,6 @@ db.once("open", () => {
             grades: [{letterGrade: "A"}]
         }]        
     });
-    
-    // Insertion operation by creating a admin(1)
-    var newAdmin1 = Admin ({
-        name: "Administrator1",
-        email: "admin1@gmail.com",
-        password: "password123"
-    })
-
-    // Insertion operation by creating a admin(2)
-    var newAdmin2 = Admin ({
-        name: "Administrator2",
-        email: "admin2@gmail.com",
-        password: "password1234"
-    })
 
     // Insertion operation by creating a professor(1)
     var newProfessor1 = Professor ({
@@ -123,34 +109,6 @@ db.once("open", () => {
             console.log(courses);
 
             db.collection("Courses").drop(() => {
-                db.close();
-            });
-        });
-    });
-
-
-    //Save Admins
-    newAdmin1.save((err) => {
-        if (err) console.error(err);
-        console.log("Administrator created");
-        Admin.find({}, (err, admin) => {
-            if (err) console.error(err);
-            console.log(admin);
-
-            db.collection("Admin").drop(() => {
-                db.close();
-            });
-        });
-    });
-
-    newAdmin2.save((err) => {
-        if (err) console.error(err);
-        console.log("Administrator created");
-        Admin.find({}, (err, admin) => {
-            if (err) console.error(err);
-            console.log(admin);
-
-            db.collection("Admin").drop(() => {
                 db.close();
             });
         });
@@ -239,12 +197,6 @@ db.once("open", () => {
     newCourse1.remove({}, (err) => {
         if (err) console.error(err);
         console.log("Course deleted");
-    });
-
-    //Delete admin(2)
-    newAdmin2.remove({}, (err) => {
-        if (err) console.error(err);
-        console.log("Admin deleted");
     });
 
     //Delete professor(1)
