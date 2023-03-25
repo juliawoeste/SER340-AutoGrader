@@ -30,6 +30,14 @@ db.once("open", () => {
 
     //Create Routes 
 
+    // Insertion operation by creating a course(1)
+    var newCourse1 = Courses ({
+        courseName: "SER340",
+        _assignmentsId: ["",""],
+        _studentId: [""],
+        _professorId: ""
+    });
+
     // Insertion operation by creating an assignment
     var newAssignment1 = Assignments ({
         assignmentTitle: "Milestone 1",
@@ -47,29 +55,29 @@ db.once("open", () => {
         completionStatus: true
     });
 
-    // Insertion operation by creating a course(1)
-    var newCourse1 = Courses ({
-        courseName: "SER340",
-        assignments: [{
-            assignmentTitle: "Milestone 1",
-            status: false,
-            dueDate: "03/28/2023",
-            description: "In this milestone, you will design the database and build mongoose schemas for the database collections. You will also propose and design the endpoints. Use the requirements document form last semester and front-end implementation to identify the main collections in your database and routers needed. This milestone is 15% of the project",
-            grades: [{letterGrade: "A"}]
-        }]        
-    });
+    // Insertion operation by creating a student(1)
+    var newStudent1 = Student ({
+        name: "Rion-Mark McLaren Jr",
+        email: "ramclaren@quinnipiac.edu",
+        password: "rion123",
+        _coursesId: [""]
+    })
 
-    // Insertion operation by creating a course(2)
-    var newCourse2 = Courses ({
-        courseName: "SER341",
-        assignments: [{
-            assignmentTitle: "Milestone 1",
-            status: false,
-            dueDate: "03/28/2023",
-            description: "In this milestone, you will design the database and build mongoose schemas for the database collections. You will also propose and design the endpoints. Use the requirements document form last semester and front-end implementation to identify the main collections in your database and routers needed. This milestone is 15% of the project",
-            grades: [{letterGrade: "A"}]
-        }]        
-    });
+    // Insertion operation by creating a student(2)
+    var newStudent2 = Student ({
+        name: "Humna Hanif",
+        email: "hhanif@quinnipiac.edu",
+        password: "humna123",
+        _coursesId: [""]
+    })
+
+    // Insertion operation by creating a student(3)
+    var newStudent3 = Student ({
+        name: "Julia Woeste",
+        email: "jwoeste@quinnipiac.edu",
+        password: "julia123",
+        _coursesId: [""]
+    })
 
     // Insertion operation by creating a professor(1)
     var newProfessor1 = Professor ({
@@ -88,27 +96,6 @@ db.once("open", () => {
         _coursesId: [" ", " ", " "]
     })
 
-    // Insertion operation by creating a student(1)
-    var newStudent1 = Student ({
-        name: "Rion-Mark McLaren Jr",
-        email: "ramclaren@quinnipiac.edu",
-        password: "rion123"
-    })
-
-    // Insertion operation by creating a student(2)
-    var newStudent2 = Student ({
-        name: "Humna Hanif",
-        email: "hhanif@quinnipiac.edu",
-        password: "humna123"
-    })
-
-    // Insertion operation by creating a student(3)
-    var newStudent3 = Student ({
-        name: "Julia Woeste",
-        email: "jwoeste@quinnipiac.edu",
-        password: "julia123"
-    })
-
     //Save courses
     newCourse1.save((err) => {
         if (err) console.error(err);
@@ -123,14 +110,27 @@ db.once("open", () => {
         });
     });
 
-    newCourse2.save((err) => {
+    newAssignment1.save((err) => {
         if (err) console.error(err);
-        console.log("Course created");
-        Courses.find({}, (err, courses) => {
+        console.log("Assignment created");
+        Assignments.find({}, (err, courses) => {
             if (err) console.error(err);
             console.log(courses);
 
-            db.collection("Courses").drop(() => {
+            db.collection("Assignments").drop(() => {
+                db.close();
+            });
+        });
+    });
+
+    newSubmission.save((err) => {
+        if (err) console.error(err);
+        console.log("Submission created");
+        Submissions.find({}, (err, submissions) => {
+            if (err) console.error(err);
+            console.log(submissions);
+
+            db.collection("Submissions").drop(() => {
                 db.close();
             });
         });
