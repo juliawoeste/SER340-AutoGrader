@@ -16,7 +16,11 @@ var studentSchema = new Schema({
         type : String,
         required : true,
         unique : true
-    }
+    },
+	_coursesId: {
+		type : [String],
+		required : false,
+	}
 },
 	{ timestamps : true 
 			
