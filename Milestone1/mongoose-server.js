@@ -31,11 +31,12 @@ db.once("open", () => {
     //Create Routes 
 
     // Insertion operation by creating a course(1)
+   
     var newCourse1 = Courses ({
         courseName: "SER340",
         _assignmentsId: ["",""],
         _studentId: [""],
-        _professorId: ""
+        _professorId: "2454674"
     });
 
     // Insertion operation by creating an assignment
@@ -96,141 +97,81 @@ db.once("open", () => {
         _coursesId: [" ", " ", " "]
     })
 
-    //Save courses
-    newCourse1.save((err) => {
+    //Save Course
+newCourse1.save((err) => {
+    if (err) console.error(err);
+    console.log("Course created");
+    Courses.find({}, (err, courses) => {
         if (err) console.error(err);
-        console.log("Course created");
-        Courses.find({}, (err, courses) => {
-            if (err) console.error(err);
-            console.log(courses);
-
-            db.collection("Courses").drop(() => {
-                db.close();
-            });
-        });
+        console.log(courses);
     });
-
+    });
+    
+    //Save Assignment
     newAssignment1.save((err) => {
+    if (err) console.error(err);
+    console.log("Assignment created");
+    Assignments.find({}, (err, courses) => {
         if (err) console.error(err);
-        console.log("Assignment created");
-        Assignments.find({}, (err, courses) => {
-            if (err) console.error(err);
-            console.log(courses);
-
-            db.collection("Assignments").drop(() => {
-                db.close();
-            });
-        });
+        console.log(courses);
     });
-
+    });
+    
+    //Save Submission
     newSubmission.save((err) => {
+    if (err) console.error(err);
+    console.log("Submission created");
+    Submissions.find({}, (err, submissions) => {
         if (err) console.error(err);
-        console.log("Submission created");
-        Submissions.find({}, (err, submissions) => {
-            if (err) console.error(err);
-            console.log(submissions);
-
-            db.collection("Submissions").drop(() => {
-                db.close();
-            });
-        });
+        console.log(submissions);
     });
-
+    });
+    
     //Save Professors
     newProfessor1.save((err) => {
+    if (err) console.error(err);
+    console.log("Professor created");
+    Professor.find({}, (err, professor) => {
         if (err) console.error(err);
-        console.log("Professor created");
-        Professor.find({}, (err, professor) => {
-            if (err) console.error(err);
-            console.log(professor);
-
-            db.collection("Professor").drop(() => {
-                db.close();
-            });
-        });
+        console.log(professor);
     });
-
+    });
+    
     newProfessor2.save((err) => {
+    if (err) console.error(err);
+    console.log("Professor created");
+    Professor.find({}, (err, professor) => {
         if (err) console.error(err);
-        console.log("Professor created");
-        Professor.find({}, (err, professor) => {
-            if (err) console.error(err);
-            console.log(professor);
-
-            db.collection("Professor").drop(() => {
-                db.close();
-            });
-        });
+        console.log(professor);
     });
-
+    });
+    
     //Save Students
     newStudent1.save((err) => {
+    if (err) console.error(err);
+    console.log("Student created");
+    Student.find({}, (err, student) => {
         if (err) console.error(err);
-        console.log("Student created");
-        Student.find({}, (err, student) => {
-            if (err) console.error(err);
-            console.log(student);
-
-            db.collection("Student").drop(() => {
-                db.close();
-            });
-        });
+        console.log(student);
     });
-
+    });
+    
     newStudent2.save((err) => {
+    if (err) console.error(err);
+    console.log("Student created");
+    Student.find({}, (err, student) => {
         if (err) console.error(err);
-        console.log("Student created");
-        Student.find({}, (err, student) => {
-            if (err) console.error(err);
-            console.log(student);
-
-            db.collection("Student").drop(() => {
-                db.close();
-            });
-        });
+        console.log(student);
     });
-
+    });
+    
     newStudent3.save((err) => {
+    if (err) console.error(err);
+    console.log("Student created");
+    Student.find({}, (err, student) => {
         if (err) console.error(err);
-        console.log("Student created");
-        Student.find({}, (err, student) => {
-            if (err) console.error(err);
-            console.log(student);
-
-            db.collection("Student").drop(() => {
-                db.close();
-            });
-        });
+        console.log(student);
     });
-
-    //Update Student 1's name
-    // Student.findOneAndUpdate(
-    //     {_id: newStudent1._id},
-    //     {$set:{name: "Updated Rion-Mark McLaren Jr"}},
-    //     {new: true})
-    
-    // Delete Course 1
-    // Courses.remove(
-    //     {_id:newCourse1._id},
-
-    // )
-    
-    //Delete course(1)
-    newCourse1.remove({}, (err) => {
-        if (err) console.error(err);
-        console.log("Course deleted");
-    });
-
-    //Delete professor(1)
-    newProfessor1.remove({}, (err) => {
-        if (err) console.error(err);
-        console.log("Professor deleted");
-    });
-
-    //Delete student(2)
-    newStudent2.remove({}, (err) => {
-        if (err) console.error(err);
-        console.log("Student deleted");
     });
 });
 
