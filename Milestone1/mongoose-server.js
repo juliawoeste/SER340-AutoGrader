@@ -5,6 +5,8 @@ var Users = require("./models/users");
 var Professor = require("./models/professor");
 var Student = require("./models/student");
 var Courses = require("./models/courses");
+var Assignments = require("./models/assignments");
+var Submissions = require("./models/submissions");
 
 //Express Variables
 var express = require('express');
@@ -27,6 +29,23 @@ db.once("open", () => {
     console.log("Connected");
 
     //Create Routes 
+
+    // Insertion operation by creating an assignment
+    var newAssignment1 = Assignments ({
+        assignmentTitle: "Milestone 1",
+        dueDate: "3/26/2023",
+        description: "In this milestone, you will design the database and build mongoose schemas for the database collections. You will also propose and design the endpoints. Use the requirements document form last semester and front-end implementation to identify the main collections in your database and routers needed. This milestone is 15% of the project",
+        _submissionsId: [" ", " ", " "]
+    });
+
+    // Insertion operation by creating a submission
+    var newSubmission = Submissions ({
+        _assignmentId: " ",
+        _studentId: " ", 
+        grade: "A", 
+        files: [" "],
+        completionStatus: true
+    });
 
     // Insertion operation by creating a course(1)
     var newCourse1 = Courses ({
@@ -56,14 +75,17 @@ db.once("open", () => {
     var newProfessor1 = Professor ({
         name: "Ruby ElKharboutly",
         email: "rehab.elkharboutly@quinnipiac.edu",
-        password: "ruby123"
+        password: "ruby123",
+        _coursesId: [" ", " "]
+
     })
 
     // Insertion operation by creating a professor(2)
     var newProfessor2 = Professor ({
         name: "Jonathan Blake",
         email: "jonathan.blake@quinnipiac.edu",
-        password: "jonathan123"
+        password: "jonathan123",
+        _coursesId: [" ", " ", " "]
     })
 
     // Insertion operation by creating a student(1)
