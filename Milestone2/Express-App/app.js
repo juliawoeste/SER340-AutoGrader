@@ -7,7 +7,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
-var users = require('./routes/courses');
+var courses = require('./routes/courses');
 /**
  * Create a connection to mongoDB using mongoose
  */
