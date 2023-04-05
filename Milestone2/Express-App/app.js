@@ -7,7 +7,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
-var users = require('./routes/courses');
+var courses = require('./routes/courses');
 /**
  * Create a connection to mongoDB using mongoose
  */
@@ -38,6 +38,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/courses', courses);
+//app.use('/student', students)
 //add professor and student routes here
 
 
