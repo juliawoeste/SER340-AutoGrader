@@ -141,5 +141,8 @@ coursesRouter.route('/:courseId/students/:studentId') //router to access assignm
         });
     });
 });
+<<<<<<< HEAD
 
+=======
+>>>>>>> 86070319edcde9f7fdac949c2244e7f78ac5722c
 module.exports = coursesRouter;
