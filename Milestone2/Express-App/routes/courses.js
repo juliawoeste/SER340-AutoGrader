@@ -115,10 +115,12 @@ coursesRouter.route('/:courseId/students') //router to access students in a cour
     });
 })
 
-.post((req, res, next)=>{
+
+coursesRouter.route('/:courseId/students/:studentId') //router to access assignments in a course
+.put((req, res, next)=>{
     courses.findById(req.params.courseId,  (err, course)=>{
         if (err) throw err;
-        course._studentsId.push(req.body)
+        course._studentsId.push(req.params.studentId)
         course.save((err, course)=>{
             if (err) throw err;
             console.log("Student Id added")
@@ -126,14 +128,14 @@ coursesRouter.route('/:courseId/students') //router to access students in a cour
         })
 	});
 })
-coursesRouter.route('/:courseId/students/:studentId') //router to access assignments in a course
 
 //remove a specific student id from the list of ids
 .delete( (req, res, next)=>{
     courses.findById(req.params.courseId,  (err, course)=>{
         for (var i = course._studentsId.length -1; i >= 0; i--) {
-            if (course._studentsId[i] == req.params._studentsId)
-            course._studentsId[i].remove() //remove a single student
+            if (course._studentsId[i] == req.params.studentsId) {
+                course._studentsId[i].remove() //remove a single student
+            }
         }
         course.save( (err, resp)=>{
             if (err) throw err;

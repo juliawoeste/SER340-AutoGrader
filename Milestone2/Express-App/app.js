@@ -8,11 +8,17 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var courses = require('./routes/courses');
+var student = require('./routes/student');
+var professor = require('./routes/professor');
+var assignments = require('./routes/assignments');
+var submissions = require('./routes/submissions');
+
 /**
  * Create a connection to mongoDB using mongoose
  */
 var mongoose = require('mongoose');
 // Connection URL
+//Rion's Test Database Link: mongodb+srv://ser340:A3156FKcmRylIpOT@cluster0.iv5w7tz.mongodb.net/?retryWrites=true&w=majority
 var url = 'mongodb+srv://hhanif:ser341@cluster0.wyu4ij4.mongodb.net/?retryWrites=true&w=majority';
 
 // Connect using mongoose
@@ -38,7 +44,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/courses', courses);
-//app.use('/student', students)
+app.use('/student', student);
+app.use('/professor', professor);
+app.use('/assignments', assignments);
+app.use('/submissions', submissions);
 //add professor and student routes here
 
 
