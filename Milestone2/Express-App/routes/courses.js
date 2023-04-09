@@ -32,7 +32,6 @@ coursesRouter.route('/')
 })
 
 coursesRouter.route('/:courseId') // a second router is define using parameters.
-
 .get((req,res,next)=>{
 	  // 4- find by id 
       courses.findById(req.params.courseId, (err, course) => {
@@ -63,7 +62,6 @@ coursesRouter.route('/:courseId') // a second router is define using parameters.
 });
 
 coursesRouter.route('/:courseId/assignments') //router to access assignments in a course
-
 //get the ids of all the assignments in the courses
 .get((req, res, next)=>{
     courses.findById(req.params.courseId,  (err, course)=>{
@@ -73,12 +71,12 @@ coursesRouter.route('/:courseId/assignments') //router to access assignments in 
     });
 })
 
-
+coursesRouter.route('/:courseId/assignments/:assignmentId') //router to access specific assignments in a course
 //add a new assignment id to the list of assignment ids in a course
-.post((req, res, next)=>{
+.put((req, res, next)=>{
     courses.findById(req.params.courseId,  (err, course)=>{
         if (err) throw err;
-        course._assignmentsId.push(req.body)
+        course._assignmentsId.push(req.params.assignmentsId)
         course.save((err, course)=>{
             if (err) throw err;
             console.log("Assignment Id added")
@@ -86,9 +84,6 @@ coursesRouter.route('/:courseId/assignments') //router to access assignments in 
         })
 	});
 })
-
-
-coursesRouter.route('/:courseId/assignments/:assignmentId') //router to access specific assignments in a course
 
 //remove a specific assignment id from the list of ids
 .delete( (req, res, next)=>{

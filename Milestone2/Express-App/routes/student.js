@@ -3,6 +3,7 @@ var studentRouter = express.Router();
 /** 1- declare mongoose and student **/
 const mongoose = require('mongoose')
 const student = require('../models/student')
+const courses = require('../models/courses')
 
 studentRouter.route('/') 
 .get((req,res,next)=>{ //chained into route(), no semi-colon after the all implementation
@@ -74,8 +75,18 @@ studentRouter.route('/:studentId/courses/:courseId')
             if (err) throw err;
             console.log("Course Id added")
             res.json(student)
-        })
+        }) 
 	});
+    // courses.findById(req.params.courseId,  (err, course)=>{
+    //     console.log('Run test')
+    //     if (err) throw err;
+    //     course._studentsId.push(req.params.studentId)
+    //     course.save((err, course)=>{
+    //         if (err) throw err;
+    //         console.log("Student Id added")
+    //         res.json(course)
+    //     })
+	// });
 })
 
 //remove a specific course id from the list of ids
@@ -83,7 +94,7 @@ studentRouter.route('/:studentId/courses/:courseId')
     student.findById(req.params.studentId,  (err, student)=>{
         for (var i = student._coursesId.length -1; i >= 0; i--) {
             if (student._coursesId[i] == req.params.courseId) {
-                student._coursesId[i].remove() //remove a single student
+                student._coursesId[i].remove() //remove a single course
             }
         }
         student.save( (err, resp)=>{

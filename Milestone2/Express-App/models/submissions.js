@@ -10,6 +10,7 @@ var submissionSchema = new Schema({
     _studentId : {
         type : String,
         required : true,
+        unique: true
     },
     grade : {
         type : String,

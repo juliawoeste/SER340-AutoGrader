@@ -19,6 +19,7 @@ var submissions = require('./routes/submissions');
 var mongoose = require('mongoose');
 // Connection URL
 //Rion's Test Database Link: mongodb+srv://ser340:A3156FKcmRylIpOT@cluster0.iv5w7tz.mongodb.net/?retryWrites=true&w=majority
+//var url = 'mongodb+srv://ser340:A3156FKcmRylIpOT@cluster0.iv5w7tz.mongodb.net/?retryWrites=true&w=majority'
 var url = 'mongodb+srv://hhanif:ser341@cluster0.wyu4ij4.mongodb.net/?retryWrites=true&w=majority';
 
 // Connect using mongoose
