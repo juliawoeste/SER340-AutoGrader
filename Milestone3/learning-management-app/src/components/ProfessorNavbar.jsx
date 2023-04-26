@@ -39,10 +39,16 @@ class ProfessorNavbar extends Component {
               </a>
             </li>
             <li className="nav-item">
+              <a className="nav-link" href="#">
+                Add Student
+              </a>
+            </li>
+            <li className="nav-item">
               <a className="nav-link" href="#" style={{ paddingLeft: "60rem" }}>
                 Logout
               </a>
             </li>
+           
           </ul>
         </div>
       </nav>
