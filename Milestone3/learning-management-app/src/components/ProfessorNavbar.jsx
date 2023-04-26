@@ -3,6 +3,7 @@
 
 import React, { Component } from "react";
 import Joi from "joi";
+import { NavLink } from "react-router-dom";
 
 class ProfessorNavbar extends Component {
   constructor(props) {
@@ -29,26 +30,25 @@ class ProfessorNavbar extends Component {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item active">
-              <a className="nav-link" href="#">
+              <NavLink className="nav-link" to="/professorCourses">
                 View Courses
-              </a>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <NavLink className="nav-link" to="/addCourse">
                 Add Course
-              </a>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <NavLink className="nav-link" to="/addStudent" style={{}}>
                 Add Student
-              </a>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#" style={{ paddingLeft: "60rem" }}>
+              <NavLink className="nav-link" to="/" style={{}}>
                 Logout
-              </a>
+              </NavLink>
             </li>
-           
           </ul>
         </div>
       </nav>

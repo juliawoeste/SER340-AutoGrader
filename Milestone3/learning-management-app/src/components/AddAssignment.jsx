@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ProfessorNavbar from "./ProfessorNavbar";
+import { NavLink } from "react-router-dom";
 
 class AddAssignment extends Component {
   constructor(props) {
@@ -44,7 +45,12 @@ class AddAssignment extends Component {
             />
           </div>
           <button type="submit" className="btn btn-primary">
-            Submit
+            <NavLink
+              className="nav-link"
+              to="/professorCourses/professorAssignmentView"
+            >
+              Submit
+            </NavLink>
           </button>
         </form>
       </div>

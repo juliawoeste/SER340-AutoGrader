@@ -5,6 +5,7 @@
 import React, { Component } from "react";
 import Joi from "joi";
 import ProfessorNavbar from "./ProfessorNavbar";
+import ProfessorCourseCard from "./professorCourseCard";
 
 class ProfessorCourses extends Component {
   constructor(props) {
@@ -12,7 +13,12 @@ class ProfessorCourses extends Component {
   }
   state = {};
   render() {
-    return <ProfessorNavbar />;
+    return (
+      <React.Fragment>
+        <ProfessorNavbar />
+        <ProfessorCourseCard onDelete={this.handleDelete} />
+      </React.Fragment>
+    );
   }
 }
 

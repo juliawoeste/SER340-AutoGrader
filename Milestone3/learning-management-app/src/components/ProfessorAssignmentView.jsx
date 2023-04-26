@@ -4,10 +4,10 @@
 // TO-DO: hrefs (all navigations)
 // TO-DO: professor view course requests from student
 
-
 import React, { Component } from "react";
 import Joi from "joi";
 import ProfessorNavbar from "./ProfessorNavbar";
+import ProfessorAssignmentCard from "./professorAssignmentCard";
 
 class ProfessorAssignmentView extends Component {
   constructor(props) {
@@ -18,15 +18,7 @@ class ProfessorAssignmentView extends Component {
     return (
       <div>
         <ProfessorNavbar />
-        <div class="card" style={{ width: "18rem", align: "center" }}>
-          <div class="card-header">Course Assignments</div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Assignment 1</li>
-            <li class="list-group-item">Assignment 2</li>
-            <li class="list-group-item">Assignment 3</li>
-          </ul>
-          <button className="btn btn-primary">Add Assignment</button>
-        </div>
+        <ProfessorAssignmentCard />
       </div>
     );
   }

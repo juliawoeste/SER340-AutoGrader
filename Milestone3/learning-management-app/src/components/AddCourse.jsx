@@ -3,6 +3,7 @@
 import React, { Component } from "react";
 import Joi from "joi";
 import ProfessorNavbar from "./ProfessorNavbar";
+import { NavLink } from "react-router-dom";
 
 class AddCourse extends Component {
   constructor(props) {
@@ -29,7 +30,9 @@ class AddCourse extends Component {
             />
           </div>
           <button type="submit" className="btn btn-primary">
-            Submit
+            <NavLink className="nav-link" to="/professorCourses">
+              Submit
+            </NavLink>
           </button>
         </form>
       </div>
