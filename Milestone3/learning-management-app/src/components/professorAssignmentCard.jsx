@@ -7,7 +7,15 @@ const ProfessorAssignmentCard = () => {
 
   return (
     <React.Fragment>
-      <div class="card" style={{ width: "18rem", align: "center" }}>
+      <div
+        class="card"
+        style={{
+          width: "18rem",
+          align: "center",
+          marginTop: "10rem",
+          marginLeft: "33rem",
+        }}
+      >
         <div class="card-header">Course Assignments</div>
         <ul class="list-group list-group-flush">
           <li

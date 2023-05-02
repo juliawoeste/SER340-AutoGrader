@@ -100,6 +100,7 @@ class LoginFormProfessor extends Component {
                     type="text"
                     aria-aria-describedby="emailHelp"
                     className="form-control"
+                    placeholder="Enter Email"
                   />
                 </div>
                 {this.state.errors.email && (
@@ -128,6 +129,7 @@ class LoginFormProfessor extends Component {
                   type="text"
                   aria-aria-describedby="emailHelp"
                   className="form-control"
+                  placeholder="Enter Password"
                 />
                 {this.state.errors.password && (
                   <div className="alert alert-danger">

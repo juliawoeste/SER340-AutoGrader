@@ -13,9 +13,11 @@ class ProfessorCourseCard extends Component {
       <React.Fragment>
         <div className="container">
           <div className="row">
-            <h3>There are {courses.length} courses!</h3>
+            <h3 style={{ marginTop: "4rem" }}>
+              There are {courses.length} courses!
+            </h3>
           </div>
-          <div className="row">
+          <div className="row" style={{ marginTop: "4rem" }}>
             {courses.map((course, index) => (
               <div className="col-sm">
                 <div className="card h-100">
@@ -30,7 +32,11 @@ class ProfessorCourseCard extends Component {
                   </div>
                   <div className="card-body">
                     <Link to={"/professorCourses/professorAssignmentView"}>
-                      <button onClick={() => ""} class="btn btn-primary">
+                      <button
+                        onClick={() => ""}
+                        class="btn btn-primary"
+                        style={{ marginLeft: "1rem" }}
+                      >
                         View Course
                       </button>
                     </Link>
@@ -39,6 +45,7 @@ class ProfessorCourseCard extends Component {
                         this.props.onDelete(course);
                       }}
                       class="btn btn-primary"
+                      style={{ marginLeft: "1rem" }}
                     >
                       Delete
                     </button>
