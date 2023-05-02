@@ -5,8 +5,9 @@
 import React, { Component } from "react";
 import Joi from "joi-browser";
 import "./styles/login-style.css";
+import { Link } from "react-router-dom";
 
-class LoginForm extends Component {
+class LoginFormStudent extends Component {
   //username = React.createRef();
   state = {
     account: {
@@ -69,7 +70,7 @@ class LoginForm extends Component {
         >
           <form onSubmit={this.handleSubmit}>
             <div className="form-group">
-              <h4>Login</h4>
+              <h4>Student Login</h4>
               <h6 style={{ marginTop: "2rem" }}>
                 Sign in to your account to continue.
               </h6>
@@ -126,7 +127,9 @@ class LoginForm extends Component {
                   {this.state.errors.password}
                 </div>
               )}
-              <button className="btn btn-primary">Login</button>
+              <Link to={"/studentCourses"}>
+                <button className="btn btn-primary">Login</button>
+              </Link>
             </div>
           </form>
         </div>
@@ -135,4 +138,4 @@ class LoginForm extends Component {
   }
 }
 
-export default LoginForm;
+export default LoginFormStudent;
