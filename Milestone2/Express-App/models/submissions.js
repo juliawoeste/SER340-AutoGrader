@@ -1,35 +1,35 @@
-var mongoose = require('mongoose');
+var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 // Submission Schema w/ four properties
-var submissionSchema = new Schema({
-    _assignmentId : {
-        type : String,
-        required : true,
-    }, 
-    _studentId : {
-        type : String,
-        required : true,
-        unique: true
+var submissionSchema = new Schema(
+  {
+    _assignmentId: {
+      type: String,
+      required: true,
     },
-    grade : {
-        type : String,
-        required : false,
+    _studentId: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    grade: {
+      type: String,
+      required: false,
     },
     files: {
-        type : [String],
-        required : false,
+      type: [String],
+      required: false,
     },
-    completionStatus : {
-        type : Boolean,
-        required: true
-    }
-},
-	{ timestamps : true 
-			
-	});
+    completionStatus: {
+      type: Boolean,
+      required: true,
+    },
+  },
+  { timestamps: true }
+);
 
-// Export schema as a model 
-var Submission = mongoose.model('Submission', submissionSchema);
+// Export schema as a model
+var Submission = mongoose.model("Submission", submissionSchema);
 
 module.exports = Submission;

@@ -1,20 +1,8 @@
-const courses = [
+const assignments = [
   {
     id: 1,
     name: "SER341",
     summary: "It's a course",
-    assignments: {
-      id: 1,
-      name: "",
-      dueDate: "",
-      description: "",
-      submissions: {
-        id: 1,
-        studentName: "",
-        grade: "",
-        completitionStatus: "",
-      },
-    },
   },
   {
     id: 2,
