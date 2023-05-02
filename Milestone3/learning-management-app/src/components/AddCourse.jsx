@@ -3,13 +3,31 @@
 import React, { Component } from "react";
 import Joi from "joi";
 import ProfessorNavbar from "./ProfessorNavbar";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import { getCourses } from "./services/courseService";
 
 class AddCourse extends Component {
   constructor(props) {
     super(props);
   }
-  state = {};
+  state = {
+    courses: getCourses(),
+    newCourse: {
+      id: "",
+      name: "",
+      summary: "",
+    },
+  };
+  //ToDo implementation
+  onSubmit() {
+    const courses = [...this.state.courses];
+    const newCourse = [this.state.newCourse];
+    newCourse.id = courses.length();
+    courses.push(newCourse);
+
+    this.setState({ courses });
+  }
+
   render() {
     return (
       <div>
@@ -18,22 +36,34 @@ class AddCourse extends Component {
           <div className="form-group">
             <h4>Add Course</h4>
             <h6 style={{ marginTop: "2rem" }}>
-              Please input the name of the course to be added.
+              Please input the name and description of the course to be added.
             </h6>
-            <label for="exampleInputEmail1">Course Name</label>
+            <label for="courseName">Course Name</label>
             <input
+              value={this.state.newCourse.name}
+              onChange={this.handleChange}
               type="text"
               className="form-control"
-              id="exampleInputEmail1"
+              id="courseName"
               aria-describedby="emailHelp"
               placeholder="Enter Course Name"
             />
+            <label for="courseDescription">Course Description</label>
+            <input
+              value={this.state.newCourse.summary}
+              onChange={this.handleChange}
+              type="text"
+              className="form-control"
+              id="courseDescription"
+              aria-describedby="emailHelp"
+              placeholder="Enter Course Description"
+            />
           </div>
-          <button type="submit" className="btn btn-primary">
-            <NavLink className="nav-link" to="/professorCourses">
+          <Link to="/professorCourses">
+            <button type="submit" className="btn btn-primary" onSubmit={""}>
               Submit
-            </NavLink>
-          </button>
+            </button>
+          </Link>
         </form>
       </div>
     );
