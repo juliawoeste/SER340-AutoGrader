@@ -18,6 +18,43 @@ axios.interceptors.response.use(null, (error) => {
 
 function setJwt(jwt) {
   axios.defaults.headers.common["x-access-token"] = jwt;
+import http from "./httpService";
+import { getJwt } from "./authService";
+import * as config from "../config.json";
+
+
+const { apiUrl } = config;
+
+const apiEndpoint = apiUrl + "courses";
+
+function courseUrl(id) { //combines id with API
+  return `${apiEndpoint}/${id}`;
+}
+
+export function getCourses() { //gets all courses
+  http.setJwt(getJwt()); //sets and gets the token
+  return http.get(apiEndpoint);
+}
+
+export function getCourse(courseId) { //gets course by id
+  http.setJwt(getJwt());
+  return http.get(courseUrl(courseId));
+}
+
+export function saveCourse(course) { //saves course
+  http.setJwt(getJwt());
+  if (course._id) {
+    const body = { ...course };
+    delete body._id;
+    return http.put(courseUrl(course._id), body);
+  }
+
+  return http.post(apiEndpoint, course);
+}
+
+export function deleteCourse(courseId) {
+  http.setJwt(getJwt());
+  return http.delete(courseUrl(courseId));
 }
 
 export default {
@@ -27,42 +64,3 @@ export default {
   delete: axios.delete,
   setJwt,
 };
-
-
-// const courses = [
-//   {
-//     id: 1,
-//     name: "SER341",
-//     summary: "It's a course",
-//     assignments: {
-//       id: 1,
-//       name: "",
-//       dueDate: "",
-//       description: "",
-//       submissions: {
-//         id: 1,
-//         studentName: "",
-//         grade: "",
-//         completitionStatus: "",
-//       },
-//     },
-//   },
-//   {
-//     id: 2,
-//     name: "SER120",
-//     summary: "It's a course",
-//   },
-//   {
-//     id: 3,
-//     name: "SER490",
-//     summary: "It's a course",
-//   },
-//   {
-//     id: 4,
-//     name: "SER200",
-//     summary: "It's a course",
-//   },
-// ];
-// export function getCourses() {
-//   return courses;
-// }

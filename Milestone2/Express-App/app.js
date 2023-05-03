@@ -13,7 +13,7 @@ var student = require("./routes/student");
 var professor = require("./routes/professor");
 var assignments = require("./routes/assignments");
 var submissions = require("./routes/submissions");
-
+var cors = require("cors");
 /**
  * Create a connection to mongoDB using mongoose
  */
@@ -39,7 +39,7 @@ var app = express();
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "jade");
-
+app.use(cors());
 app.use(logger("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
