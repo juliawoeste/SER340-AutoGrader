@@ -17,6 +17,7 @@ import RequestCourse from "./components/StudentRequestCourse";
 import NoMatch from "./components/NoMatch.jsx";
 import LoginFormProfessor from "./components/LoginFormProfessor";
 import LoginFormStudent from "./components/LoginFormStudent";
+import { getCourses } from "./components/services/courseService";
 
 //ToDo Refactor Router Paths, Include ids
 function App() {
@@ -31,7 +32,7 @@ function App() {
           element={<AddAssignment />}
         />
         <Route
-          path="/professorCourses/professorAssignmentView"
+          path="/professorCourses/:courseId"
           element={<ProfessorAssignmentView />}
         />
         <Route path="/professorCourses" element={<ProfessorCourses />} />

@@ -31,7 +31,7 @@ class ProfessorCourseCard extends Component {
                     <p className="card-text">{course.summary}.</p>
                   </div>
                   <div className="card-body">
-                    <Link to={"/professorCourses/professorAssignmentView"}>
+                    <Link to={`/professorCourses/${course.id}`}>
                       <button
                         onClick={() => ""}
                         class="btn btn-primary"

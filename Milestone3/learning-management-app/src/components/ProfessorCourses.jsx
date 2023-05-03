@@ -6,7 +6,6 @@ import React, { Component } from "react";
 import Joi from "joi";
 import ProfessorNavbar from "./ProfessorNavbar";
 import ProfessorCourseCard from "./professorCourseCard";
-import { getCourses } from "./services/courseService";
 class ProfessorCourses extends Component {
   constructor(props) {
     super(props);
@@ -14,19 +13,18 @@ class ProfessorCourses extends Component {
       courses: getCourses(),
     };
   }
+
   handleDelete = (course) => {
     const courses = [...this.state.courses];
     const newCourses = courses.filter((r) => r.id !== course.id);
     this.setState({ courses: newCourses });
   };
   render() {
+    const { courses } = this.props;
     return (
       <React.Fragment>
         <ProfessorNavbar />
-        <ProfessorCourseCard
-          courses={this.state.courses}
-          onDelete={this.handleDelete}
-        />
+        <ProfessorCourseCard courses={courses} onDelete={this.handleDelete} />
       </React.Fragment>
     );
   }

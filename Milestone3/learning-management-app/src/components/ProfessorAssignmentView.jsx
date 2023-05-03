@@ -5,23 +5,23 @@
 // TO-DO: professor view course requests from student
 
 import React, { Component } from "react";
+import { useParams } from "react-router-dom";
 import Joi from "joi";
 import ProfessorNavbar from "./ProfessorNavbar";
 import ProfessorAssignmentCard from "./professorAssignmentCard";
+import { Link } from "react-router-dom";
+import { getCourses } from "./services/courseService";
 
-class ProfessorAssignmentView extends Component {
-  constructor(props) {
-    super(props);
-  }
-  state = {};
-  render() {
-    return (
-      <div>
-        <ProfessorNavbar />
-        <ProfessorAssignmentCard />
-      </div>
-    );
-  }
-}
+const ProfessorAssignmentView = () => {
+  const { course } = useParams();
 
+  //const assignments = [...course.assignments];
+  return (
+    <div>
+      <ProfessorNavbar />
+      <h1>This is: {course}</h1>
+    </div>
+  );
+};
+//<ProfessorAssignmentCard course={course} />
 export default ProfessorAssignmentView;
