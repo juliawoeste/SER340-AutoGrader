@@ -8,7 +8,6 @@ import "./styles/login-style.css";
 import { Link } from "react-router-dom";
 
 class LoginFormStudent extends Component {
-  //username = React.createRef();
   state = {
     account: {
       email: "",
@@ -66,89 +65,67 @@ class LoginFormStudent extends Component {
   render() {
     return (
       <section className="glasscard">
-        <div>
-          <div
-            className="container"
-            style={{
-              width: "30rem",
-              alignContent: "center",
-              textAlign: "center",
-            }}
-          >
-            <form onSubmit={this.handleSubmit}>
-              <div className="form-group">
-                <h4>Student Login</h4>
-                <h6 style={{ marginTop: "2rem" }}>
-                  Sign in to your account to continue.
-                </h6>
-                <div className="row">
-                  <label
-                    style={{
-                      fontWeight: "bold",
-                      marginTop: "2rem",
-                      textAlign: "center",
-                    }}
-                    htmlFor="email"
-                  >
-                    Email Address
-                  </label>
-                  <input
-                    value={this.state.account.email}
-                    onChange={this.handleChange}
-                    name="email"
-                    id="email"
-                    type="text"
-                    aria-aria-describedby="emailHelp"
-                    className="form-control"
-                    placeholder="Enter Email"
-                  />
+        <div
+          className="container"
+          style={{
+            width: "30rem",
+            alignContent: "center",
+            textAlign: "center",
+          }}
+        >
+          <form onSubmit={this.handleSubmit}>
+            <div className="form-group">
+              <h4>Student Login</h4>
+              <h6 style={{ marginTop: "2rem" }}>
+                Sign in to your account to continue.
+              </h6>
+              <label htmlFor="email">Email Address</label>
+              <input
+                value={this.state.account.email}
+                onChange={this.handleChange}
+                name="email"
+                id="email"
+                type="text"
+                className="form-control"
+                placeholder="Enter Email"
+              />
+              {this.state.errors.email && (
+                <div className="alert alert-danger">
+                  {" "}
+                  {this.state.errors.email}
                 </div>
-                {this.state.errors.email && (
-                  <div className="alert alert-danger">
-                    {" "}
-                    {this.state.errors.email}
-                  </div>
-                )}
-              </div>
-              <div className="form-group">
-                <label
-                  style={{
-                    fontWeight: "bold",
-                    marginTop: "2rem",
-                    textAlign: "center",
-                  }}
-                  htmlFor="password"
+              )}
+            </div>
+            <div className="form-group">
+              <label htmlFor="password">Password</label>
+              <input
+                id="password"
+                value={this.state.account.password}
+                onChange={this.handleChange}
+                name="password"
+                type="password"
+                className="form-control"
+                placeholder="Enter Password"
+              />
+              {this.state.errors.password && (
+                <div className="alert alert-danger">
+                  {" "}
+                  {this.state.errors.password}
+                </div>
+              )}
+            </div>
+            <div className="form-group">
+              <Link to={"/professorCourses"}>
+                <button
+                  className="btn btn-primary"
+                  style={{ marginTop: "2rem" }}
+                  disabled={this.state.disableSubmit}
                 >
-                  Password
-                </label>
-                <input
-                  id="password"
-                  value={this.state.account.password}
-                  onChange={this.handleChange}
-                  name="password"
-                  type="text"
-                  aria-aria-describedby="emailHelp"
-                  className="form-control"
-                  placeholder="Enter Password"
-                />
-                {this.state.errors.password && (
-                  <div className="alert alert-danger">
-                    {" "}
-                    {this.state.errors.password}
-                  </div>
-                )}
-                <Link to={"/studentCourses"}>
-                  <button
-                    className="btn btn-primary"
-                    style={{ marginTop: "2rem" }}
-                    disabled={this.state.disableSubmit}
-                  >
-                    Login
-                  </button>
-                </Link>
-              </div>
-            </form>
-          </div>
+                  Login
+                </button>
+              </Link>
+            </div>
+          </form>
         </div>
       </section>
     );
