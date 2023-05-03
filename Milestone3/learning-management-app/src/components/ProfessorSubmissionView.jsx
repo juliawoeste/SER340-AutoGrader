@@ -1,72 +1,60 @@
-import React, {Component} from 'react';
-import Joi from 'joi';
-import StudentNavbar from './StudentNavbar';
-import ProfessorNavbar from './ProfessorNavbar';
+import React, { Component } from "react";
+import Joi from "joi";
+import StudentNavbar from "./StudentNavbar";
+import ProfessorNavbar from "./ProfessorNavbar";
 
 class ProfessorSubmissionView extends Component {
-    constructor(props) {
-        super(props);
-    }
-    state = {  }
-    render() { 
-        return (
-            <div>
-            <ProfessorNavbar />
-        <body>
-            <section
-              className="glasscard"
-              style={{width: "70rem", height: "50rem", marginTop: "3rem"}}
-            >
-              <div className="title">
-                <h4>Assignment</h4>
-                <div className="row" style={{paddingLeft: "50px"}}>
-                  <div className="row" style={{marginTop: "15px"}}>
-
-                  </div>
-                  <div className="row" style={{marginTop: "15px"}}>
-                    <h5>Assignment Title</h5>
-                  </div>
-                  <div className="row" style={{marginTop: "1px"}}><h6></h6></div>
-                  <div className="row" style={{marginTop: "15px"}}>
-                    <h5>Assignment Due Date</h5>
-                  </div>
-                  <div className="row" style={{marginTop: "1px"}}><h6></h6></div>
-                  <div className="row" style={{marginTop: "15px"}}>
-                    <h5>Assignment Description</h5>
-                  </div>
-                  <div className="row" style={{marginTop: "1px"}}>
-                    <h6>
-                     
-                    </h6>
-                  </div>
-                  <div className="row" style={{marginTop: "30px"}}>
-                    <h5>Assignment File(s)</h5>
-                  </div>
-                  <div className="row" style={{marginTop: "1px"}}>
-                    <a href="Milestone 3.pdf"></a>
-                  </div>
-                  <div className="row" style={{marginTop: "30px"}}>
-                    
-                  </div>
-                  <div className="row" style={{marginTop: "1px"}}>
-                    <a href="Milestone 3.pdf"></a>
-                  </div>
-                  <div className="row" style={{marginTop: "30px"}}><h5>Grade: </h5>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="exampleInputEmail1"
-                    aria-describedby="emailHelp"
-                    placeholder="Enter Grade for Assignment"
-                    style={{width: "15rem"}}
-            />
-                  </div>
-                </div>
+  constructor(props) {
+    super(props);
+  }
+  state = {};
+  render() {
+    return (
+      <div>
+        <ProfessorNavbar />
+        <section className="glasscard">
+          <form>
+            <div className="form-group">
+              <h4 style={{ marginTop: "3rem" }}>Assignment</h4>
+              <h5 style={{ marginTop: "1rem" }}>Assignment Title</h5>
+              <h5 style={{ marginTop: "1rem" }}> Assignment Due Date</h5>
+              <h5 style={{ marginTop: "1rem" }}>Assignment Description</h5>
+              <div
+                className="grades"
+                style={{
+                  display: "flex",
+                  marginLeft: "9rem",
+                  marginTop: "3rem",
+                }}
+              ></div>
+              <div
+                className="table"
+                style={{
+                  justifyContent: "center",
+                  alignContent: "center",
+                  marginLeft: "7rem",
+                }}
+              >
+                <table id="table">
+                  <thead>
+                    <tr>
+                      <th data-field="name" data-sortable="true">
+                        Student Name
+                      </th>
+                      <th data-field="status" data-sortable="true">
+                        Submission Status
+                      </th>
+                      <th data-field="grade">Grade</th>
+                    </tr>
+                  </thead>
+                </table>
               </div>
-            </section>
-          </body> 
-          </div>);
-    }
+            </div>
+          </form>
+        </section>
+      </div>
+    );
+  }
 }
- 
-export default ProfessorSubmissionView
+
+export default ProfessorSubmissionView;
