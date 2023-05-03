@@ -46,10 +46,10 @@ class AddCourse extends Component {
                 className="form-control"
                 id="courseName"
                 aria-describedby="emailHelp"
-                placeholder="Enter Course Name"
+                placeholder="Enter Course Name (e.g. MA229)"
               />
-              <label for="courseDescription" style={{ marginTop: "2rem" }}>
-                Course Description
+              <label for="courseTitle" style={{ marginTop: "2rem" }}>
+                Course Title
               </label>
               <input
                 value={this.state.newCourse.summary}
@@ -57,7 +57,7 @@ class AddCourse extends Component {
                 className="form-control"
                 id="courseDescription"
                 aria-describedby="emailHelp"
-                placeholder="Enter Course Description"
+                placeholder="Enter Course Title (e.g. Linear Algebra)"
               />
             </div>
             <Link to="/professorCourses">

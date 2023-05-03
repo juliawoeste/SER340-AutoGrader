@@ -28,7 +28,7 @@ class ProfessorCourseCard extends Component {
                     <h6 className="card-subtitle mb-2 text-muted">
                       {course.type}
                     </h6>
-                    <p className="card-text">{course.summary}.</p>
+                    <h4 className="card-text">{course.courseTitle}</h4>
                   </div>
                   <div className="card-body">
                     <Link to={`/professorCourses/${course.id}`}>

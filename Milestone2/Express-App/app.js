@@ -5,7 +5,6 @@ var path = require("path");
 var logger = require("morgan");
 var cookieParser = require("cookie-parser");
 var bodyParser = require("body-parser");
-const cors = require("cors");
 
 var index = require("./routes/index");
 var courses = require("./routes/courses");
@@ -14,6 +13,9 @@ var professor = require("./routes/professor");
 var assignments = require("./routes/assignments");
 var submissions = require("./routes/submissions");
 const cors = require("cors");
+var passport = require("passport");
+var LocalStrategy = require("passport-local").Strategy;
+
 /**
  * Create a connection to mongoDB using mongoose
  */
@@ -39,6 +41,7 @@ var app = express();
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "jade");
 app.use(logger("dev"));
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -52,6 +55,21 @@ app.use("/professor", professor);
 app.use("/assignments", assignments);
 app.use("/submissions", submissions);
 //add professor and student routes here
+
+//3- add passport config
+var Professor = require("./models/professor"); //we will create this model to support users
+app.use(passport.initialize());
+passport.use(new LocalStrategy(User.authenticate())); //user.authenticated will be exported by  user model it will use passport-user-mongoose
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+var Student = require("./models/student"); //we will create this model to support users
+app.use(passport.initialize());
+passport.use(new LocalStrategy(User.authenticate())); //user.authenticated will be exported by  user model it will use passport-user-mongoose
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+app.use(express.static(path.join(__dirname, "public")));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

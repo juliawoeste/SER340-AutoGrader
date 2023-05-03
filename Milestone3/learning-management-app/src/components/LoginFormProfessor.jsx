@@ -1,135 +1,145 @@
 // TO-DO: Check to see if inputs match any professor or student in database
 // TO-DO: Send name as a prompt
 // TO-DO: hrefs (all navigations)
-
-import React, { Component } from "react";
 import Joi from "joi-browser";
 import "./styles/login-style.css";
 import { Link } from "react-router-dom";
+import { React, useState } from "react";
+import auth from "./services/authService";
 
-class LoginFormProfessor extends Component {
-  state = {
-    account: {
-      email: "",
-      password: "",
-    },
+const LoginFormProfessor = () => {
+  const [state, setState] = useState({
+    data: { email: "", password: "" },
     errors: {},
-    disableSubmit: true,
-  };
-  schema = {
-    email: Joi.string().required().label("Email"),
-    password: Joi.string().required().label("Password"),
-  };
+  });
 
-  validate = () => {
-    const { error } = Joi.validate(this.state.account, this.schema, {
+  // if (!auth.getCurrentUser()) window.location = "/";
+  const validate = () => {
+    const schema = {
+      email: Joi.string().required().label("Email"),
+      password: Joi.string().required().label("Password"),
+    };
+    const { error } = Joi.validate(state.data, schema, {
       abortEarly: false,
     });
+    if (!error) return null;
     const errors = {};
     for (let item of error.details) errors[item.path[0]] = item.message;
+    console.log(errors);
     return errors;
   };
-
-  validateProperty = ({ name, value }) => {
-    if (name === "email") {
-      if (value.trim() === "") return "Username is required";
-    }
-    if (name === "password") {
-      if (value.trim() === "") return "Password is required";
-    }
+  const validateProperty = ({ name, value }) => {
+    let schema = {
+      email: Joi.string().required().label("Email"),
+      password: Joi.string().required().label("Password"),
+    };
+    const obj = { [name]: value };
+    schema = { [name]: schema[name] };
+    const { error } = Joi.validate(obj, schema);
+    if (!error) return null;
+    return error.details[0].message;
   };
-
-  handleSubmit = (e) => {
-    e.preventDefault(); //prevent submitting to the server
-    const errors = this.validate();
-    console.log(errors);
-    this.setState({ errors: errors || {} });
-  };
-
-  handleChange = ({ currentTarget: input }) => {
-    const errors = { ...this.state.errors };
-    const errorMessage = this.validateProperty(input);
-    console.log(errorMessage);
+  const handleChange = ({ currentTarget: input }) => {
+    const errors = { ...state.errors } || {};
+    const errorMessage = validateProperty(input);
     if (errorMessage) errors[input.name] = errorMessage;
-    const account = { ...this.state.account };
-    account[input.name] = input.value;
-    this.setState({ account, errors });
-
-    if (account.email && account.password) {
-      this.setState({ disableSubmit: false });
-    } else {
-      this.setState({ disableSubmit: true });
-    }
+    setState((preValue) => {
+      // Get the previous value of state
+      return {
+        ...preValue, // use the spread operator to get all the previous values of state
+        [input.name]: input.value,
+        errors: errors,
+      };
+    });
   };
 
-  render() {
-    return (
-      <section className="glasscard">
-        <div
-          className="container"
-          style={{
-            width: "30rem",
-            alignContent: "center",
-            textAlign: "center",
-          }}
-        >
-          <form onSubmit={this.handleSubmit}>
-            <div className="form-group">
-              <h4>Professor Login</h4>
-              <h6 style={{ marginTop: "2rem" }}>
-                Sign in to your account to continue.
-              </h6>
-              <label htmlFor="email">Email Address</label>
-              <input
-                value={this.state.account.email}
-                onChange={this.handleChange}
-                name="email"
-                id="email"
-                type="text"
-                className="form-control"
-                placeholder="Enter Email"
-              />
-              {this.state.errors.email && (
-                <div className="alert alert-danger">
-                  {" "}
-                  {this.state.errors.email}
-                </div>
-              )}
-            </div>
-            <div className="form-group">
-              <label htmlFor="password">Password</label>
-              <input
-                id="password"
-                value={this.state.account.password}
-                onChange={this.handleChange}
-                name="password"
-                type="password"
-                className="form-control"
-                placeholder="Enter Password"
-              />
-              {this.state.errors.password && (
-                <div className="alert alert-danger">
-                  {" "}
-                  {this.state.errors.password}
-                </div>
-              )}
-            </div>
-            <div className="form-group">
-              <Link to={"/professorCourses"}>
-                <button
-                  className="btn btn-primary"
-                  style={{ marginTop: "2rem" }}
-                  disabled={this.state.disableSubmit}
-                >
-                  Login
-                </button>
-              </Link>
-            </div>
-          </form>
-        </div>
-      </section>
-    );
-  }
-}
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const errors = this.validate();
+    // this.setState({ errors: errors || {} });
+    setState((preValue) => {
+      // Get the previous value of state
+      return {
+        ...preValue, // use the spread operator to get all the previous values of state
+        errors: errors || {},
+      };
+    });
+    try {
+      const { email, password } = state.data;
+      auth.login(email, password);
+
+      //const { state } = this.props.location;
+      //console.log(state);
+
+      window.location = "/professorCourses"; //state ? state.from.pathname : "/";
+      // this.props.history.push("/");
+    } catch (ex) {
+      if (ex.response && ex.response.status === 400) {
+        const errors = { ...state.errors };
+        errors.email = ex.response.data;
+        setState((preValue) => {
+          // Get the previous value of state
+          return {
+            ...preValue, // use the spread operator to get all the previous values of state
+            errors: errors,
+          };
+        });
+      }
+    }
+    // console.log(this.state.email + " " + this.state.password);
+  };
+  return (
+    <section className="glasscard">
+      <div
+        className="container"
+        style={{
+          width: "30rem",
+          alignContent: "center",
+          textAlign: "center",
+        }}
+      >
+        <h1>Login </h1>
+        <form>
+          <div className="form-group">
+            <label htmlFor="email">Email</label>
+            <input
+              type="text"
+              name="email"
+              className="form-control"
+              defaultValue={state.data.email}
+              onChange={handleChange}
+              id="email"
+              aria-describedby="emailHelp"
+            />
+            {state.errors.email && (
+              <div className="alert alert-danger"> {state.errors.email}</div>
+            )}
+          </div>
+          <div className="form-group">
+            <label htmlFor="password">Password</label>
+            <input
+              id="password"
+              defaultValue={state.data.password}
+              name="password"
+              onChange={handleChange}
+              type="password"
+              className="form-control"
+            />
+            {state.errors.password && (
+              <div className="alert alert-danger"> {state.errors.password}</div>
+            )}
+            <button
+              disabled={validate()}
+              onClick={handleSubmit}
+              className="btn btn-primary"
+            >
+              Login
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+  );
+};
 
 export default LoginFormProfessor;

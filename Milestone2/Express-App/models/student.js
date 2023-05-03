@@ -1,32 +1,39 @@
-var mongoose = require('mongoose');
+var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
+var passportLocalMongoose = require("passport-local-mongoose");
 
 // Student Schema w/ three properties
-var studentSchema = new Schema({
-	name : { 
-			type : String,
-			required: true,
-			unique : true
-			},
-	email : {
-			type : String,
-			required : true
-	},
-    password : {
-        type : String,
-        required : true,
-        unique : true
+var studentSchema = new Schema(
+  {
+    name: {
+      type: String,
+      required: true,
     },
-	_coursesId: {
-		type : [String],
-		required : false,
-	}
-},
-	{ timestamps : true 
-			
-	});
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    password: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    _coursesId: {
+      type: [String],
+      required: false,
+    },
+    admin: {
+      //true or false for admin
+      type: Boolean,
+      default: false,
+    },
+  },
+  { timestamps: true }
+);
 
 // Export schema as a model
-var Student = mongoose.model('Student', studentSchema);
+var Student = mongoose.model("Student", studentSchema);
+Student.plugin(passportLocalMongoose); //adds the user hash and salt fileds to store the user name, the hashed password and salted value
 
 module.exports = Student;
