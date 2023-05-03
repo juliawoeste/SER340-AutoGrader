@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
-
-import {
-  getCourses,
-  deleteCourse,
-  saveCourse,
-} from "./services/CoursesService";
+import { getCourses, deleteCourse, saveCourse } from "./services/courseService";
 import auth from "./services/authService";
+import ProfessorNavbar from "./ProfessorNavbar";
+import { Link } from "react-router-dom";
+import ProfessorCourseCard from "./professorCourseCard";
 
 const ProfessorCourses = () => {
   const [courses, setCourses] = useState([]);
@@ -21,16 +19,16 @@ const ProfessorCourses = () => {
     fetchData();
   }, []);
 
-  const handleSearch = (event) => {
-    setQuery(event.target.value);
-  };
-  const handleLike = (course) => {
-    const index = courses.indexOf(Course);
-    let newCourses = courses;
-    newCourses[index].liked = !newCourses[index].liked;
-    setCourses(newCourses);
-    setRerender(!rerender);
-  };
+  // const handleSearch = (event) => {
+  //   setQuery(event.target.value);
+  // };
+  // const handleLike = (course) => {
+  //   const index = courses.indexOf(course);
+  //   let newCourses = courses;
+  //   newCourses[index].liked = !newCourses[index].liked;
+  //   setCourses(newCourses);
+  //   setRerender(!rerender);
+  // };
 
   const handleDelete = async (course) => {
     console.log(course);
@@ -47,46 +45,35 @@ const ProfessorCourses = () => {
       }
     }
   };
-  const handleAdd = async () => {
-    const NewCourse = {
-      name: "SER341",
-      _professorId: "",
-    };
-    const { data: course } = await saveCourse(NewCourse);
-    console.log(course);
-    const newCourses = [course, ...courses];
-    setCourses(newCourses);
-  };
-  const filterCourseByName = () => {
-    if (query) {
-      const filtered = courses.filter((p) =>
-        p.name.toLowerCase().startsWith(query.toLowerCase())
-      );
-      return filtered;
-    }
-    return courses;
-  };
+  // const handleAdd = async () => {
+  //   const NewCourse = {
+  //     name: "SER341",
+  //     _professorId: "",
+  //   };
+  //   const { data: course } = await saveCourse(NewCourse);
+  //   console.log(course);
+  //   const newCourses = [course, ...courses];
+  //   setCourses(newCourses);
+  // };
+  // const filterCourseByName = () => {
+  //   if (query) {
+  //     const filtered = courses.filter((p) =>
+  //       p.name.toLowerCase().startsWith(query.toLowerCase())
+  //     );
+  //     return filtered;
+  //   }
+  //   return courses;
+  // };
 
-  const filteredCourses = filterCourseByName();
-  if (!auth.getCurrentUser()) {
-    console.log("no user");
-    window.location = "/login";
-  }
+  // const filteredCourses = filterCourseByName();
+  // if (!auth.getCurrentUser()) {
+  //   console.log("no user");
+  //   window.location = "/login";
+  // }
   return (
     <React.Fragment>
       <ProfessorNavbar />
-      <div>
-        <tbody>
-          {courses.map((course, index) => (
-            <tr key={index}>
-              <td>
-                <Link to={`/course/${course._id}`}> {course.name} </Link>
-              </td>
-              <td></td>
-            </tr>
-          ))}
-        </tbody>
-      </div>
+      <ProfessorCourseCard courses={courses} onDelete={handleDelete} />
     </React.Fragment>
   );
 };

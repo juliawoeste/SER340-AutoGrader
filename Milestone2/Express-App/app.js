@@ -5,7 +5,6 @@ var path = require("path");
 var logger = require("morgan");
 var cookieParser = require("cookie-parser");
 var bodyParser = require("body-parser");
-const cors = require("cors");
 
 var index = require("./routes/index");
 var courses = require("./routes/courses");
@@ -13,17 +12,16 @@ var student = require("./routes/student");
 var professor = require("./routes/professor");
 var assignments = require("./routes/assignments");
 var submissions = require("./routes/submissions");
-var cors = require("cors");
+const cors = require("cors");
 /**
  * Create a connection to mongoDB using mongoose
  */
 var mongoose = require("mongoose");
 // Connection URL
 //Rion's Test Database Link: mongodb+srv://ser340:A3156FKcmRylIpOT@cluster0.iv5w7tz.mongodb.net/?retryWrites=true&w=majority
-//var url =
-//("mongodb+srv://ser340:A3156FKcmRylIpOT@cluster0.iv5w7tz.mongodb.net/?retryWrites=true&w=majority");
 var url =
-  "mongodb+srv://hhanif:ser341@cluster0.wyu4ij4.mongodb.net/?retryWrites=true&w=majority";
+  "mongodb+srv://ser340:A3156FKcmRylIpOT@cluster0.iv5w7tz.mongodb.net/?retryWrites=true&w=majority";
+//var url =  "mongodb+srv://hhanif:ser341@cluster0.wyu4ij4.mongodb.net/?retryWrites=true&w=majority";
 
 // Connect using mongoose
 mongoose.connect(url, { useNewUrlParser: true });
@@ -47,7 +45,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
 
-app.use(cors());
 app.use("/", index);
 app.use("/courses", courses);
 app.use("/student", student);

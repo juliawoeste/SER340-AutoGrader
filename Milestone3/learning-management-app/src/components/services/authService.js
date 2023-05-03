@@ -1,6 +1,6 @@
 import jwtDecode from "jwt-decode";
 import http from "./httpService";
-import * as config from "../config.json";
+import * as config from "./config.json";
 
 const { apiUrl } = config;
 const apiEndpoint = apiUrl + "courses/";
