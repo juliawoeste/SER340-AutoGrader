@@ -1,35 +1,97 @@
-// TO-DO: Course cards
-// TO-DO: Delete a course
-// TO-DO: hrefs (all navigations)
+import React, { useEffect, useState } from "react";
 
-import React, { Component } from "react";
-import Joi from "joi";
-import ProfessorNavbar from "./ProfessorNavbar";
-import ProfessorCourseCard from "./professorCourseCard";
-import { getCourses } from "./services/courseService";
-class ProfessorCourses extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      courses: getCourses(),
-    };
-  }
-  handleDelete = (course) => {
-    const courses = [...this.state.courses];
-    const newCourses = courses.filter((r) => r.id !== course.id);
-    this.setState({ courses: newCourses });
+import {
+  getCourses,
+  deleteCourse,
+  saveCourse,
+} from "./services/CoursesService";
+import auth from "./services/authService";
+
+
+const ProfessorCourses = () => {
+  const [courses, setCourses] = useState([]);
+  const [query, setQuery] = useState("");
+  const [rerender, setRerender] = useState(false);
+
+  useEffect(() => {
+    async function fetchData() {
+      const { data } = await getCourses();
+      console.log(data);
+      setCourses(data);
+    }
+    fetchData();
+  }, []);
+
+  const handleSearch = (event) => {
+    setQuery(event.target.value);
   };
-  render() {
+  const handleLike = (course) => {
+    const index = courses.indexOf(Course);
+    let newCourses = courses;
+    newCourses[index].liked = !newCourses[index].liked;
+    setCourses(newCourses);
+    setRerender(!rerender);
+  };
+
+  const handleDelete = async (course) => {
+    console.log(course);
+    const newCourses = courses.filter((p) => p._id !== course._id);
+
+    setCourses(newCourses);
+    try {
+      await deleteCourse(course._id);
+    } catch (ex) {
+      console.log("delete exception");
+      if (ex.respond && ex.respond.status === 404) {
+        alert("Course has already been deleted !");
+        setCourses(courses);
+      }
+    }
+  };
+  const handleAdd = async () => {
+    const NewCourse = {
+      name: "SER341",
+      _professorId: ""
+    };
+    const { data: course } = await saveCourse(NewCourse);
+    console.log(course);
+    const newCourses = [course, ...courses];
+    setCourses(newCourses);
+  };
+  const filterCourseByName = () => {
+    if (query) {
+      const filtered = courses.filter((p) =>
+        p.name.toLowerCase().startsWith(query.toLowerCase())
+      );
+      return filtered;
+    }
+    return courses;
+  };
+
+  const filteredCourses = filterCourseByName();
+  if (!auth.getCurrentUser()) {
+    console.log("no user");
+    window.location = "/login";
+  }
     return (
       <React.Fragment>
         <ProfessorNavbar />
-        <ProfessorCourseCard
-          courses={this.state.courses}
-          onDelete={this.handleDelete}
-        />
+        <div>
+        <tbody>
+        {courses.map((course, index) => (
+          <tr key={index}>
+            <td>
+              <Link to={`/course/${course._id}`}> {course.name} </Link>
+            </td>
+            <td>
+            </td>
+            </tr>
+        ))}
+            </tbody>
+        </div>
       </React.Fragment>
     );
   }
-}
+
 
 export default ProfessorCourses;
