@@ -3,14 +3,14 @@ import http from "./httpService";
 import * as config from "./config.json";
 
 const { apiUrl } = config;
-const apiEndpoint = apiUrl + "courses/";
+const apiEndpoint = apiUrl + "professor/";
 const tokenKey = "token";
 
 http.setJwt(getJwt());
 
-export async function login(username, password) {
+export async function login(email, password) {
   const { data: jwt } = await http.post(apiEndpoint + "login", {
-    username,
+    email,
     password,
   });
 

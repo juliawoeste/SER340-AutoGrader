@@ -55,17 +55,18 @@ const LoginFormProfessor = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const errors = this.validate();
+    // const errors = this.validate();
     // this.setState({ errors: errors || {} });
     setState((preValue) => {
       // Get the previous value of state
       return {
         ...preValue, // use the spread operator to get all the previous values of state
-        errors: errors || {},
+        //errors: errors || {},
       };
     });
     try {
       const { email, password } = state.data;
+      console.log(email);
       auth.login(email, password);
 
       //const { state } = this.props.location;
@@ -128,11 +129,7 @@ const LoginFormProfessor = () => {
             {state.errors.password && (
               <div className="alert alert-danger"> {state.errors.password}</div>
             )}
-            <button
-              disabled={validate()}
-              onClick={handleSubmit}
-              className="btn btn-primary"
-            >
+            <button onClick={handleSubmit} className="btn btn-primary">
               Login
             </button>
           </div>

@@ -66,7 +66,7 @@ professorRouter.post("/login", (req, res, next) => {
       return next(err);
     }
     if (!professor) {
-      console.log("no professor");
+      console.log("No professor information");
       return res.status(401).json({ err: info });
     }
     req.logIn(professor, function (err) {
