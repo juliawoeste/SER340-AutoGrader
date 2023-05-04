@@ -33,7 +33,7 @@ var professorSchema = new Schema(
 );
 
 // Export schema as a model
-var Professor = mongoose.model("Professor", professorSchema);
-Professor.plugin(passportLocalMongoose); //adds the user hash and salt fileds to store the user name, the hashed password and salted value
+//var Professor = mongoose.model("Professor", professorSchema);
+professorSchema.plugin(passportLocalMongoose); //adds the user hash and salt fileds to store the user name, the hashed password and salted value
 
-module.exports = Professor;
+module.exports = mongoose.model("Professor", professorSchema);

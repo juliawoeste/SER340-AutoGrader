@@ -58,17 +58,17 @@ app.use("/submissions", submissions);
 //add professor and student routes here
 
 //3- add passport config
-var Professor = require("./models/professor"); //we will create this model to support users
+var professor = require("./models/professor"); //we will create this model to support users
 app.use(passport.initialize());
-passport.use(new LocalStrategy(User.authenticate())); //user.authenticated will be exported by  user model it will use passport-user-mongoose
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+passport.use(new LocalStrategy(professor.authenticate())); //user.authenticated will be exported by  user model it will use passport-user-mongoose
+passport.serializeUser(professor.serializeUser());
+passport.deserializeUser(professor.deserializeUser());
 
-var Student = require("./models/student"); //we will create this model to support users
+var student = require("./models/student"); //we will create this model to support users
 app.use(passport.initialize());
-passport.use(new LocalStrategy(User.authenticate())); //user.authenticated will be exported by  user model it will use passport-user-mongoose
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+passport.use(new LocalStrategy(student.authenticate())); //user.authenticated will be exported by  user model it will use passport-user-mongoose
+passport.serializeUser(student.serializeUser());
+passport.deserializeUser(student.deserializeUser());
 
 app.use(express.static(path.join(__dirname, "public")));
 

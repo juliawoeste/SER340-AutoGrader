@@ -31,7 +31,7 @@ studentRouter
     });
   });
 
-router.get("/", Verify.verifyAdmin, function (req, res, next) {
+  studentRouter.get("/", Verify.verifyAdmin, function (req, res, next) {
   student.find({}, function (err, students) {
     if (err) {
       throw err;
@@ -40,7 +40,7 @@ router.get("/", Verify.verifyAdmin, function (req, res, next) {
   });
 });
 // 3- register a new Student on end poitn register, info is sent as a json object
-router.post("/register", async function (req, res) {
+studentRouter.post("/register", async function (req, res) {
   student.register(
     new student({ name: req.body.name, email: req.body.email }),
     req.body.password,
@@ -59,7 +59,7 @@ router.post("/register", async function (req, res) {
   );
 });
 // 4- Student login
-router.post("/login", (req, res, next) => {
+studentRouter.post("/login", (req, res, next) => {
   //req.body will have username and password
 
   passport.authenticate("local", function (err, student, info) {
@@ -93,7 +93,7 @@ router.post("/login", (req, res, next) => {
 });
 
 // 5- implementing logout
-router.get("/logout", function (req, res) {
+studentRouter.get("/logout", function (req, res) {
   req.logout();
   res.status(200).json({
     status: "Bye!",
