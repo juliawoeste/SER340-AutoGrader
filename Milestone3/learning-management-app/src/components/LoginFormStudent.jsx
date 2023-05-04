@@ -115,7 +115,7 @@ class LoginFormStudent extends Component {
               )}
             </div>
             <div className="form-group">
-              <Link to={"/professorCourses"}>
+              <Link to={"/studentCourses"}>
                 <button
                   className="btn btn-primary"
                   style={{ marginTop: "2rem" }}

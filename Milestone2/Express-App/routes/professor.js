@@ -59,7 +59,7 @@ professorRouter.post("/register", async function (req, res) {
 // 4- professor login
 professorRouter.post("/login", (req, res, next) => {
   //req.body will have username and password
-
+  console.log(req.body);
   passport.authenticate("local", function (err, professor, info) {
     if (err) {
       console.log(err);

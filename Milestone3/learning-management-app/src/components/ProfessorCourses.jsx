@@ -19,9 +19,9 @@ const ProfessorCourses = () => {
     fetchData();
   }, []);
 
-  const handleSearch = (event) => {
-    setQuery(event.target.value);
-  };
+  // const handleSearch = (event) => {
+  //   setQuery(event.target.value);
+  // };
   // const handleLike = (course) => {
   //   const index = courses.indexOf(course);
   //   let newCourses = courses;
@@ -55,32 +55,32 @@ const ProfessorCourses = () => {
   //   const newCourses = [course, ...courses];
   //   setCourses(newCourses);
   // };
-  const filterCourseByName = () => {
-    if (query) {
-      const filtered = courses.filter((p) =>
-        p.name.toLowerCase().startsWith(query.toLowerCase())
-      );
-      return filtered;
-    }
-    return courses;
-  };
-
-  const filteredCourses = filterCourseByName();
-  // if (!auth.getCurrentUser()) {
+  // const filterCourseByName = () => {
+  //   if (query) {
+  //     const filtered = courses.filter((p) =>
+  //       p.name.toLowerCase().startsWith(query.toLowerCase())
+  //     );
+  //     return filtered;
+  //   }
+  //   return courses;
+  // };
+  // const filteredCourses = filterCourseByName();
+  //
+  //if (!auth.getCurrentUser()) {
   //   console.log("no user");
   //   window.location = "/professorLogin";
   // }
   return (
     <React.Fragment>
       <ProfessorNavbar />
-      <input
+      {/* <input
         type="text"
         className="form-control"
         name="search"
         placeholder="Search by Name"
         value={query}
         onChange={handleSearch}
-      />
+      /> */}
       <ProfessorCourseCard courses={courses} onDelete={handleDelete} />
     </React.Fragment>
   );

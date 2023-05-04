@@ -39,6 +39,7 @@ const LoginFormProfessor = () => {
     if (!error) return null;
     return error.details[0].message;
   };
+
   const handleChange = ({ currentTarget: input }) => {
     const errors = { ...state.errors } || {};
     const errorMessage = validateProperty(input);
@@ -66,13 +67,14 @@ const LoginFormProfessor = () => {
     });
     try {
       const { email, password } = state.data;
+      console.log("here");
       console.log(email);
       auth.login(email, password);
 
       //const { state } = this.props.location;
       //console.log(state);
 
-      window.location = "/professorCourses"; //state ? state.from.pathname : "/";
+      //window.location = "/professorCourses"; //state ? state.from.pathname : "/";
       // this.props.history.push("/");
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
