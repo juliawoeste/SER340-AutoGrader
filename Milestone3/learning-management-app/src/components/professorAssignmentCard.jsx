@@ -1,41 +1,66 @@
 import React, { Component } from "react";
-import { useNavigate } from "react-router-dom";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const ProfessorAssignmentCard = () => {
-  const navigate = useNavigate();
+class ProfessorAssignmentCard extends Component {
+  constructor(props) {
+    super(props);
+  }
+  state = {};
 
-  return (
-    <React.Fragment>
-      <div
-        class="card"
-        style={{
-          width: "18rem",
-          align: "center",
-          marginTop: "10rem",
-          marginLeft: "33rem",
-        }}
-      >
-        <div class="card-header">Course Assignments</div>
-        <ul class="list-group list-group-flush">
-          <li
-            class="list-group-item"
-            onClick={() => navigate("professorSubmissionView")}
-          >
-            Assignment 1 (click works)
-          </li>
-          <li class="list-group-item">Assignment 2</li>
-          <li class="list-group-item">Assignment 3</li>
-        </ul>
-        <button
-          className="btn btn-primary"
-          onClick={() => navigate("addAssignment")}
-        >
-          Add Assignment
-        </button>
-      </div>
-    </React.Fragment>
-  );
-};
+  render() {
+    const { assignments } = this.props;
+    const { courseId } = this.props;
+    return (
+      <React.Fragment>
+        <div className="container">
+          <div className="row">
+            <h3 style={{ marginTop: "4rem" }}>
+              There are {assignments.length} assignments!
+            </h3>
+          </div>
+          <div className="row" style={{ marginTop: "4rem" }}>
+            {assignments.map((assignment, index) => (
+              <div className="col-sm">
+                <div className="card h-100">
+                  <div className="card-header">
+                    <h6 className="card-title">{assignment.assignmentTitle}</h6>
+                  </div>
+                  <div className="card-body h-50">
+                    <h2 className="card-subtitle mb-2 text-muted">
+                      {assignment.dueDate}
+                    </h2>
+                    <h4 className="card-text">{assignment.description}</h4>
+                  </div>
+                  <div className="card-body">
+                    <Link
+                      to={`/professorCourses/${courseId}/professorAssignmentView/${assignment._id}`}
+                    >
+                      <button
+                        onClick={() => ""}
+                        class="btn btn-primary"
+                        style={{ marginLeft: "1rem" }}
+                      >
+                        View Assignment
+                      </button>
+                    </Link>
+                    <button
+                      onClick={() => {
+                        this.props.onDelete(assignment);
+                      }}
+                      class="btn btn-primary"
+                      style={{ marginLeft: "1rem" }}
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </React.Fragment>
+    );
+  }
+}
 
 export default ProfessorAssignmentCard;

@@ -14,6 +14,18 @@ class LoginFormProfessor extends Form {
     password: Joi.string().required().label("Password"),
   };
 
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const errors = this.validate();
+    this.setState({ errors: errors || {} });
+    this.setState((preValue) => {
+      // Get the previous value of state
+      return {
+        ...preValue, // use the spread operator to get all the previous values of state
+        errors: errors || {},
+      };
+    });
+  };
   doSubmit = async () => {
     try {
       const { data } = this.state;

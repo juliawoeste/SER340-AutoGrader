@@ -31,7 +31,7 @@ class ProfessorCourseCard extends Component {
                     <h4 className="card-text">{course.courseTitle}</h4>
                   </div>
                   <div className="card-body">
-                    <Link to={`/professorCourses/${course.id}`}>
+                    <Link to={`/professorCourses/${course._id}`}>
                       <button
                         onClick={() => ""}
                         class="btn btn-primary"

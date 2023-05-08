@@ -1,26 +1,43 @@
+import http from "./httpService";
+import { getJwt } from "./authService";
+import * as config from "./config.json";
+import axios from "axios";
 
-const assignments = [
-  {
-    id: 1,
-    name: "SER341",
-    summary: "It's a course",
-  },
-  {
-    id: 2,
-    name: "SER120",
-    summary: "It's a course",
-  },
-  {
-    id: 3,
-    name: "SER490",
-    summary: "It's a course",
-  },
-  {
-    id: 4,
-    name: "SER200",
-    summary: "It's a course",
-  },
-];
-export function getCourses() {
-  return courses;
+const { apiUrl } = config;
+
+const apiEndpoint = apiUrl + "assignments";
+
+function assignmentUrl(id) {
+  //combines id with API
+  return `${apiEndpoint}/${id}`;
+}
+
+export function getAssignments() {
+  //gets all assignments
+  http.setJwt(getJwt()); //sets and gets the token
+  return http.get(apiEndpoint);
+}
+
+export function getAssignment(assignmentId) {
+  //gets assignment by id
+  http.setJwt(getJwt());
+  console.log(assignmentUrl(assignmentId));
+  return http.get(assignmentUrl(assignmentId));
+}
+
+export function saveAssignment(assignment) {
+  //saves assignment
+  http.setJwt(getJwt());
+  if (assignment._id) {
+    const body = { ...assignment };
+    delete body._id;
+    return http.put(assignmentUrl(assignment._id), body);
+  }
+
+  return http.post(apiEndpoint, assignment);
+}
+
+export function deleteAssignment(assignmentId) {
+  http.setJwt(getJwt());
+  return http.delete(assignmentUrl(assignmentId));
 }

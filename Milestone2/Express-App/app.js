@@ -9,7 +9,7 @@ var bodyParser = require("body-parser");
 var index = require("./routes/index");
 var courses = require("./routes/courses");
 var student = require("./routes/student");
-var professor = require("./routes/professor");
+var professorRouter = require("./routes/professor");
 var assignments = require("./routes/assignments");
 var submissions = require("./routes/submissions");
 const cors = require("cors");
@@ -45,32 +45,45 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
+
 app.use(express.json());
 app.use(cors());
 
+//add professor and student routes here
+const localOptions = {
+  usernameField: "email",
+  passwordField: "password",
+  session: false,
+};
+
+//3- add passport config
+
+var professor = require("./models/professor"); //we will create this model to support users
+app.use(passport.initialize());
+passport.use(new LocalStrategy(localOptions, professor.authenticate())); //user.authenticated will be exported by  user model it will use passport-user-mongoose
+passport.serializeUser(professor.serializeUser());
+passport.deserializeUser(professor.deserializeUser());
+app.use("/professor", professorRouter);
+/*
+var student = require("./models/student"); //we will create this model to support users
+app.use(passport.initialize());
+passport.use(
+  new LocalStrategy({ usernameField: "email" }, student.authenticate())
+); //user.authenticated will be exported by  user model it will use passport-user-mongoose
+passport.serializeUser(student.serializeUser());
+passport.deserializeUser(student.deserializeUser());
+*/
+
+app.use(express.static(path.join(__dirname, "public")));
 app.use("/", index);
 app.use("/courses", courses);
 app.use("/student", student);
-app.use("/professor", professor);
+
 app.use("/assignments", assignments);
 app.use("/submissions", submissions);
 //add professor and student routes here
 
 //3- add passport config
-var professor = require("./models/professor"); //we will create this model to support users
-app.use(passport.initialize());
-passport.use(new LocalStrategy(professor.authenticate())); //user.authenticated will be exported by  user model it will use passport-user-mongoose
-passport.serializeUser(professor.serializeUser());
-passport.deserializeUser(professor.deserializeUser());
-
-var student = require("./models/student"); //we will create this model to support users
-app.use(passport.initialize());
-passport.use(new LocalStrategy(student.authenticate())); //user.authenticated will be exported by  user model it will use passport-user-mongoose
-passport.serializeUser(student.serializeUser());
-passport.deserializeUser(student.deserializeUser());
-
-app.use(express.static(path.join(__dirname, "public")));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
