@@ -34,7 +34,7 @@ class ProfessorCourseCard extends Component {
                     <Link to={`/professorCourses/${course._id}`}>
                       <button
                         onClick={() => ""}
-                        class="btn btn-primary"
+                        className="btn btn-primary"
                         style={{ marginLeft: "1rem" }}
                       >
                         View Course
@@ -44,7 +44,7 @@ class ProfessorCourseCard extends Component {
                       onClick={() => {
                         this.props.onDelete(course);
                       }}
-                      class="btn btn-primary"
+                      className="btn btn-primary"
                       style={{ marginLeft: "1rem" }}
                     >
                       Delete

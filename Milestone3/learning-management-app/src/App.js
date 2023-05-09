@@ -13,7 +13,7 @@ import AddSubmission from "./components/AddSubmission";
 import StudentSubmissionView from "./components/StudentSubmissionView";
 import ProfessorSubmissionView from "./components/ProfessorSubmissionView";
 import StudentCourses from "./components/StudentCourses";
-import RequestCourse from "./components/StudentRequestCourse";
+import StudentRequestCourse from "./components/StudentRequestCourse";
 import NoMatch from "./components/NoMatch.jsx";
 import LoginFormProfessor from "./components/LoginFormProfessor";
 import LoginFormStudent from "./components/LoginFormStudent";
@@ -28,9 +28,10 @@ function App() {
         <Route path="/professorLogin" element={<LoginFormProfessor />} />
         <Route path="/studentLogin" element={<LoginFormStudent />} />
         <Route
-          path="/professorCourses/professorAssignmentView/addAssignment"
+          path="/professorCourses/:courseId/professorAssignmentView/addAssignment"
           element={<AddAssignment />}
         />
+        <Route path="/addStudent" element={<AddStudent />} />
         <Route
           path="/professorCourses/:courseId"
           element={<ProfessorAssignmentView />}
@@ -39,22 +40,25 @@ function App() {
         <Route path="/addCourse" element={<AddCourse />} />
 
         <Route
-          path="/professorCourses/professorAssignmentView/professorSubmissionView"
+          path="/professorCourses/:courseId/professorAssignmentView/:assignmentId"
           element={<ProfessorSubmissionView />}
         />
-        <Route path="/addStudent" element={<AddStudent />} />
+
+        <Route path="/requestCourse" element={<StudentRequestCourse />} />
 
         <Route path="/studentCourses" element={<StudentCourses />} />
-        <Route path="/requestCourse" element={<RequestCourse />} />
         <Route
-          path="/studentAssignmentView"
+          path="/studentCourses/:courseId"
           element={<StudentAssignmentView />}
         />
         <Route
-          path="/studentSubmissionView"
+          path="/studentCourses/:courseId/studentAssignmentView/:assignmentId"
           element={<StudentSubmissionView />}
         />
-        <Route path="/addSubmission" element={<AddSubmission />} />
+        <Route
+          path="/studentCourses/:courseId/studentAssignmentView/:assignmentId/addSubmission"
+          element={<AddSubmission />}
+        />
         <Route path="*" element={<NoMatch />} />
       </Routes>
     </div>

@@ -3,7 +3,7 @@ import { getCourses, deleteCourse, saveCourse } from "./services/courseService";
 import auth from "./services/authService";
 import ProfessorNavbar from "./ProfessorNavbar";
 import { Link } from "react-router-dom";
-import ProfessorCourseCard from "./professorCourseCard";
+import ProfessorCourseCard from "./ProfessorCourseCard";
 
 const ProfessorCourses = () => {
   const [courses, setCourses] = useState([]);

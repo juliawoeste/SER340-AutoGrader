@@ -56,6 +56,11 @@ export function saveCourse(course) {
   return http.post(apiEndpoint, course);
 }
 
+export function addCourse(course) {
+  http.setJwt(getJwt());
+  return http.post(apiEndpoint, course);
+}
+
 export function deleteCourse(courseId) {
   http.setJwt(getJwt());
   return http.delete(courseUrl(courseId));

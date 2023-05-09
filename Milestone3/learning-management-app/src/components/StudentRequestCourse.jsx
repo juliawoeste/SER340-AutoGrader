@@ -1,21 +1,31 @@
 // TO-DO: hrefs (all navigations)
 // TO-DO: Database connection
-
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
+import { getCourses, deleteCourse, saveCourse } from "./services/courseService";
 import Joi from "joi";
 import StudentNavbar from "./StudentNavbar";
 
-class StudentRequestCourse extends Component {
-  constructor(props) {
-    super(props);
-  }
-  state = {};
-  render() {
-    return (
+const StudentRequestCourse = () => {
+  const [courses, setCourses] = useState([]);
+  const [query, setQuery] = useState("");
+  const [rerender, setRerender] = useState(false);
+
+  useEffect(() => {
+    async function fetchData() {
+      const { data } = await getCourses();
+      console.log(data);
+      setCourses(data);
+    }
+    fetchData();
+  }, []);
+
+  return (
+    // TO-DO: Course Cards
+    <React.Fragment>
       <StudentNavbar />
-      // TO-DO: Course Cards
-    );
-  }
-}
+      <StudentRequestCourse courses={courses} />
+    </React.Fragment>
+  );
+};
 
 export default StudentRequestCourse;

@@ -4,55 +4,48 @@ import React, { Component } from "react";
 import Joi from "joi";
 import ProfessorNavbar from "./ProfessorNavbar";
 import { Link, NavLink } from "react-router-dom";
-import { getCourses } from "./services/courseService";
+import { getCourses, saveCourse } from "./services/courseService";
 
 class AddCourse extends Component {
   constructor(props) {
     super(props);
   }
   state = {
-    courses: getCourses(),
     newCourse: {
-      id: "",
-      name: "",
-      summary: "",
+      courseName: "",
+      courseTitle: "",
+      _professorId: "",
     },
   };
   //ToDo implementation
-  onSubmit() {
-    const courses = [...this.state.courses];
-    const newCourse = [this.state.newCourse];
-    newCourse.id = courses.length();
-    courses.push(newCourse);
-
-    this.setState({ courses });
+  handleSubmit() {
+    console.log("hiiiiii");
+    saveCourse(this.state.newCourse);
   }
 
   render() {
     return (
-      <div>
+      <React.Fragment>
         <ProfessorNavbar />
         <section className="glasscard">
           <form>
             <div className="form-group">
               <h4>Add Course</h4>
               <h6 style={{ marginTop: "2rem" }}>
-                Please input the name and description of the course to be added.
+                Please input the Course Name and Course Title to be added.
               </h6>
-              <label for="courseName">Course Name</label>
+              <label>Course Name</label>
               <input
-                value={this.state.newCourse.name}
+                defaultValue={this.state.newCourse.courseName}
                 type="text"
                 className="form-control"
                 id="courseName"
                 aria-describedby="emailHelp"
                 placeholder="Enter Course Name (e.g. MA229)"
               />
-              <label for="courseTitle" style={{ marginTop: "2rem" }}>
-                Course Title
-              </label>
+              <label style={{ marginTop: "2rem" }}>Course Title</label>
               <input
-                value={this.state.newCourse.summary}
+                defaultValue={this.state.newCourse.courseTitle}
                 type="text"
                 className="form-control"
                 id="courseDescription"
@@ -60,19 +53,19 @@ class AddCourse extends Component {
                 placeholder="Enter Course Title (e.g. Linear Algebra)"
               />
             </div>
-            <Link to="/professorCourses">
-              <button
-                type="submit"
-                className="btn btn-primary"
-                onSubmit={""}
-                style={{ marginTop: "3rem" }}
-              >
-                Submit
-              </button>
-            </Link>
+            {/* <Link to="/professorCourses"> */}
+            <button
+              type="submit"
+              className="btn btn-primary"
+              onClick={this.handleSubmit}
+              style={{ marginTop: "3rem" }}
+            >
+              Submit
+            </button>
+            {/* </Link> */}
           </form>
         </section>
-      </div>
+      </React.Fragment>
     );
   }
 }

@@ -27,7 +27,7 @@ const ProfessorAssignmentView = () => {
   const { courseId } = useParams();
   const [course, setCourse] = useState([]);
   const [assignmentIds, setAssignmentIds] = useState([]);
-  const [assignments, setAssignment] = useState([]);
+  const [assignments, setAssignments] = useState([]);
 
   useEffect(() => {
     //gets the course by id
@@ -77,27 +77,31 @@ const ProfessorAssignmentView = () => {
   // }
 
   // console.log(assignments);
-  // const handleDelete = async (assignment) => {
-  //   console.log(assignment);
-  //   const newAssignments = assignments.filter((p) => p._id !== assignment._id);
+  const handleDelete = async (assignment) => {
+    console.log(assignment);
+    const newAssignments = assignments.filter((p) => p._id !== assignment._id);
 
-  //   setAssignments(newAssignments);
-  //   try {
-  //     await deleteAssignment(assignment._id);
-  //   } catch (ex) {
-  //     console.log("delete exception");
-  //     if (ex.respond && ex.respond.status === 404) {
-  //       alert("Assignment has already been deleted !");
-  //       setAssignments(assignments);
-  //     }
-  //   }
-  // };
+    setAssignments(newAssignments);
+    try {
+      await deleteAssignment(assignment._id);
+    } catch (ex) {
+      console.log("delete exception");
+      if (ex.respond && ex.respond.status === 404) {
+        alert("Assignment has already been deleted !");
+        setAssignments(assignments);
+      }
+    }
+  };
 
   return (
     <React.Fragment>
       <ProfessorNavbar />
       <h1>This is: {courseId}</h1>
-      <ProfessorAssignmentCard assignments={assignments} courseId={courseId} />
+      <ProfessorAssignmentCard
+        assignments={assignments}
+        courseId={courseId}
+        onDelete={handleDelete}
+      />
     </React.Fragment>
   );
 };
