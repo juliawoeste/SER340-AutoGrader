@@ -1,6 +1,6 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
-
+const ObjectId = Schema.Types.ObjectId
 // Course Schema w/ one property
 var courseSchema = new Schema(
   {
@@ -13,10 +13,11 @@ var courseSchema = new Schema(
       type: String,
       required: true,
     },
-    _assignmentsId: {
-      type: [String],
+    _assignmentsId: [{
+      type: ObjectId,
+      ref: 'assignments',
       required: false,
-    },
+    }],
     _studentsId: {
       type: [String],
       required: false,
