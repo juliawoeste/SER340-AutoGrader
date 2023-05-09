@@ -37,7 +37,7 @@ class ProfessorAssignmentCard extends Component {
                     >
                       <button
                         onClick={() => ""}
-                        class="btn btn-primary"
+                        className="btn btn-primary"
                         style={{ marginLeft: "1rem" }}
                       >
                         View Assignment
@@ -47,7 +47,7 @@ class ProfessorAssignmentCard extends Component {
                       onClick={() => {
                         this.props.onDelete(assignment);
                       }}
-                      class="btn btn-primary"
+                      className="btn btn-primary"
                       style={{ marginLeft: "1rem" }}
                     >
                       Delete

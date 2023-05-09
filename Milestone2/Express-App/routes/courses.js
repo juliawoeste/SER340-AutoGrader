@@ -6,6 +6,7 @@ var coursesRouter = express.Router();
 /** 1- declare mongoose and courses **/
 const mongoose = require("mongoose");
 const courses = require("../models/courses");
+const assignments = require("../models/assignments");
 
 coursesRouter
   .route("/")
@@ -66,26 +67,32 @@ coursesRouter
   .route("/:courseId/assignments") //router to access assignments in a course
   //get the ids of all the assignments in the courses
   .get((req, res, next) => {
-    courses.findById(
-      req.params.courseId
-        .populate("_assignmentsId") //1.1.6 add code to populate recipe
-        .exec(function (err, course) {
-          console.log(err);
-          //  console.log(recipe);
-          //get the recipes collection as an array,received as the recipe param
-          if (err) throw err; //propagate error
-          res.json(course); // convert to json and return in res
-        })
-    );
-    // courses.findById(req.params.courseId,  (err, course)=>{
-    //     if (err) throw err;
-    //   //return the ids of the assignments in the course
-    //     res.json(course._assignmentsId)
-    // });
+    // courses.findById(
+    //   req.params.courseId
+    //     .populate("_assignmentsId") //1.1.6 add code to populate recipe
+    //     .exec(function (err, course) {
+    //       console.log(err);
+    //       //  console.log(recipe);
+    //       //get the recipes collection as an array,received as the recipe param
+    //       if (err) throw err; //propagate error
+    //       res.json(course); // convert to json and return in res
+    //     })
+    // );
+    courses.findById(req.params.courseId, (err, course) => {
+      if (err) throw err;
+      //return the ids of the assignments in the course
+      res.json(course._assignmentsId);
+    });
   });
 
 coursesRouter
   .route("/:courseId/assignments/:assignmentId") //router to access specific assignments in a course
+  .get((req, res, next) => {
+    assignments.findById(req.params.assignmentId, (err, assignment) => {
+      if (err) throw err;
+      res.json(assignment);
+    });
+  })
   //add a new assignment id to the list of assignment ids in a course
   .put((req, res, next) => {
     courses.findById(req.params.courseId, (err, course) => {

@@ -8,7 +8,8 @@ import {
   getCourse,
   deleteCourse,
   saveCourse,
-  getCourseAssignments,
+  getCourseAssignment,
+  getCourseAssignmentIds,
 } from "./services/courseService";
 import {
   getAssignment,
@@ -38,15 +39,18 @@ const ProfessorAssignmentView = () => {
 
     //gets the assignment ids from the course
     async function fetchAssignIdData() {
-      const { data } = await getCourseAssignments(courseId);
+      const { data } = await getCourseAssignmentIds(courseId);
       console.log(data);
       setAssignmentIds(data);
     }
 
     //get assignment from each of the assignment ids from the course
     async function fetchAssignments() {
-      await assignmentIds.forEach((id) => {
-        console.log(getAssignment(id));
+      assignmentIds.forEach((id) => {
+        console.log("helloooo u");
+        const data = getCourseAssignment(courseId, id);
+        console.log(data);
+        assignments.push(data);
       });
     }
 
@@ -54,6 +58,12 @@ const ProfessorAssignmentView = () => {
     fetchAssignIdData();
     //fetchAssignments();
   }, []);
+  assignmentIds.forEach((id) => {
+    console.log("helloooo u");
+    const data = getCourseAssignment(courseId, id);
+    console.log(data);
+    assignments.push(data);
+  });
 
   // if (assignmentIds.length != 0) {
   //   //   let ids = [];

@@ -17,6 +17,15 @@ function courseAssignmentsUrl(id) {
   return `${apiEndpoint}/${id}/assignments`;
 }
 
+function courseAssignmentIdUrl(courseId, assignmentId) {
+  return `${apiEndpoint}/${courseId}/assignments/${assignmentId}`;
+}
+
+export function getCourseAssignment(courseId, assignmentId) {
+  http.setJwt(getJwt());
+  return http.get(courseAssignmentIdUrl(courseId, assignmentId));
+}
+
 export function getCourses() {
   //gets all courses
   http.setJwt(getJwt()); //sets and gets the token
@@ -29,7 +38,7 @@ export function getCourse(courseId) {
   return http.get(courseUrl(courseId));
 }
 
-export function getCourseAssignments(courseId) {
+export function getCourseAssignmentIds(courseId) {
   //gets course by id
   http.setJwt(getJwt());
   return http.get(courseAssignmentsUrl(courseId));
